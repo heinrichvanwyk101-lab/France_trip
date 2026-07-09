@@ -81,7 +81,12 @@ main{max-width:820px;margin:0 auto;padding:0 14px 60px}
   border:1px solid var(--line);box-shadow:var(--sh);margin:0 0 8px;
   background:linear-gradient(158deg,#e8f0ea 0%,#dfeae3 55%,#d6e4dc 100%);
   touch-action:manipulation}
-.svgmap svg.mapbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.svgmap svg.bg,.svgmap svg.anno{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.svgmap svg.bg{z-index:0}
+.svgmap svg.anno{z-index:2}
+.tile{position:absolute;z-index:1;user-select:none;-webkit-user-drag:none;image-rendering:auto}
+.attrib{position:absolute;right:4px;bottom:3px;z-index:6;font-family:var(--mono);font-size:8px;
+  color:#6b7c76;background:rgba(255,255,255,.72);padding:1px 5px;border-radius:4px;pointer-events:none;letter-spacing:.01em}
 .pin{position:absolute;transform:translate(-50%,-50%);border:0;padding:0;margin:0;cursor:pointer;
   background:transparent;z-index:2;-webkit-tap-highlight-color:transparent}
 .pin .dotmark{display:flex;align-items:center;justify-content:center;border-radius:50%;
@@ -101,7 +106,7 @@ main{max-width:820px;margin:0 auto;padding:0 14px 60px}
 .svgmap[data-mode="plan"] .pin:not(.planned):not(.node){display:none}
 .maplbl{position:absolute;transform:translate(-50%,-50%);font-family:var(--mono);font-size:9.5px;
   font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5f93a8;opacity:.85;
-  pointer-events:none;white-space:nowrap;z-index:1}
+  pointer-events:none;white-space:nowrap;z-index:0}
 .mapkey{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:1fr;gap:1px 16px;
   font-size:12.5px;color:var(--ink2)}
 .mapkey li{display:flex;gap:8px;align-items:baseline;padding:3px 0;line-height:1.3}
@@ -2201,8 +2206,8 @@ table.log b{color:var(--water2)}
 
   <p class="foot">
     Built from your three trip files — Canal du Midi skipper leg, the Paris/Barcelona attractions master, and the France &amp; Spain family handbook.<br>
-    Prices are 2026 official rates; confirm on each site at booking. QR codes, maps and your plan all work offline — opening a site or directions needs a connection.<br>
-    Your plan and ticked days are saved on this device. Book Alexander&rsquo;s free timed tickets too — they&rsquo;re scanned at entry.
+    Prices are 2026 official rates; confirm on each site at booking. The maps load real street tiles when you&rsquo;re online, and fall back to a simple map offline. QR codes, your plan and ticked days work offline and save on this device.<br>
+    Map tiles &copy; OpenStreetMap contributors. Book Alexander&rsquo;s free timed tickets too — they&rsquo;re scanned at entry.
   </p>
 </main>
 
@@ -2229,33 +2234,31 @@ const PLAN=loadSet(KP), DONE=loadSet(KD);
 const META={};
 ['paris','barcelona','canal'].forEach(c=>MAP_DATA[c].forEach(m=>{META[m.id]=m;}));
 
-/* ---------- projection (equirectangular, aspect-corrected, letterboxed) ---------- */
+/* ---------- Web-Mercator projection + static tile map (real basemap when online) ---------- */
 function bbox(items){
   const la=items.map(p=>p.lat), ln=items.map(p=>p.lng);
   let minLa=Math.min(...la),maxLa=Math.max(...la),minLn=Math.min(...ln),maxLn=Math.max(...ln);
-  const pa=(maxLa-minLa)*0.16||0.02, pn=(maxLn-minLn)*0.16||0.02;
-  minLa-=pa;maxLa+=pa;minLn-=pn;maxLn+=pn;
-  const mid=(minLa+maxLa)/2, k=Math.cos(mid*Math.PI/180);
-  return {minLa,maxLa,minLn,maxLn,k,gw:(maxLn-minLn)*k,gh:(maxLa-minLa)};
+  const pa=(maxLa-minLa)*0.18||0.02, pn=(maxLn-minLn)*0.18||0.02;
+  return {minLa:minLa-pa,maxLa:maxLa+pa,minLn:minLn-pn,maxLn:maxLn+pn};
 }
-function place(items,box,W,H){
-  const s=Math.min(W/box.gw,H/box.gh);
-  const dw=box.gw*s, dh=box.gh*s, ox=(W-dw)/2, oy=(H-dh)/2;
-  const P=items.map(p=>({...p, px:ox+((p.lng-box.minLn)*box.k)*s, py:oy+((box.maxLa-p.lat))*s}));
-  const minSep=30;
-  for(let it=0;it<60;it++){
-    for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){
-      let dx=P[j].px-P[i].px, dy=P[j].py-P[i].py, d=Math.hypot(dx,dy)||0.01;
-      if(d<minSep){const push=(minSep-d)/2, ux=dx/d, uy=dy/d;
-        P[i].px-=ux*push;P[i].py-=uy*push;P[j].px+=ux*push;P[j].py+=uy*push;}
-    }
+function mercX(lng,z){return (lng+180)/360*Math.pow(2,z);}
+function mercY(lat,z){const r=lat*Math.PI/180;return (1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*Math.pow(2,z);}
+function fitZoom(box,W,H){
+  for(let z=17;z>=2;z--){
+    const pw=(mercX(box.maxLn,z)-mercX(box.minLn,z))*256;
+    const ph=(mercY(box.minLa,z)-mercY(box.maxLa,z))*256;
+    if(pw<=W && ph<=H) return z;
+  } return 2;
+}
+function declutter(P,W,H,minSep){
+  for(let it=0;it<60;it++)for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){
+    let dx=P[j].px-P[i].px,dy=P[j].py-P[i].py,d=Math.hypot(dx,dy)||0.01;
+    if(d<minSep){const p=(minSep-d)/2,ux=dx/d,uy=dy/d;P[i].px-=ux*p;P[i].py-=uy*p;P[j].px+=ux*p;P[j].py+=uy*p;}
   }
   const pad=17;
-  P.forEach(p=>{p.px=Math.max(pad,Math.min(W-pad,p.px));p.py=Math.max(pad,Math.min(H-pad,p.py));
-    p.lx=p.px/W*100; p.ly=p.py/H*100;});
+  P.forEach(p=>{p.px=Math.max(pad,Math.min(W-pad,p.px));p.py=Math.max(pad,Math.min(H-pad,p.py));p.lx=p.px/W*100;p.ly=p.py/H*100;});
   return P;
 }
-
 function pinClass(m,kind){
   if(kind==='journey') return 'node';
   if(kind==='canal') return 'canal';
@@ -2266,12 +2269,14 @@ function pinLabelInner(m,kind){
   if(kind==='canal') return m.stars;
   return (m.rank>0)?m.rank:'';
 }
-
-function projPts(coords,box,W,H){
-  const s=Math.min(W/box.gw,H/box.gh), dw=box.gw*s, dh=box.gh*s, ox=(W-dw)/2, oy=(H-dh)/2;
-  return coords.map(c=>{const x=ox+((c[1]-box.minLn)*box.k)*s, y=oy+((box.maxLa-c[0]))*s; return [x/W*100, y/H*100];});
-}
 function pathD(pp){return 'M'+pp.map(p=>p[0].toFixed(2)+' '+p[1].toFixed(2)).join(' L');}
+function tileFallback(img){
+  const t=(+img.dataset.try||0)+1; img.dataset.try=t;
+  const z=img.dataset.z, x=img.dataset.x, y=img.dataset.y;
+  if(t===1){ img.src='https://tile.openstreetmap.de/'+z+'/'+x+'/'+y+'.png'; }
+  else if(t===2){ img.src='https://tile.openstreetmap.fr/osmfr/'+z+'/'+x+'/'+y+'.png'; }
+  else { img.remove(); }
+}
 
 function buildMap(id,kind){
   const el=document.getElementById(id); if(!el) return;
@@ -2284,31 +2289,60 @@ function buildMap(id,kind){
   (geo.coast||[]).forEach(c=>gflat.push({lat:c[0],lng:c[1]}));
   const box=bbox(items.concat(gflat));
   const pop=document.createElement('div'); pop.className='mappop';
+
   function render(){
     const W=el.clientWidth||320, H=el.clientHeight||300;
-    const P=place(items,box,W,H);
-    let g='';
+    const z=fitZoom(box,W,H);
+    const midLng=(box.minLn+box.maxLn)/2, midLat=(box.minLa+box.maxLa)/2;
+    const originX=mercX(midLng,z)*256-W/2, originY=mercY(midLat,z)*256-H/2;
+    const toPx=(lat,lng)=>[mercX(lng,z)*256-originX, mercY(lat,z)*256-originY];
+    const toPct=(lat,lng)=>{const p=toPx(lat,lng);return [p[0]/W*100,p[1]/H*100];};
+
+    /* fallback schematic (behind tiles) */
+    let bg='';
     if(geo.coast){
-      const cp=projPts(geo.coast,box,W,H), last=cp[cp.length-1], first=cp[0];
+      const cp=geo.coast.map(c=>toPct(c[0],c[1])), last=cp[cp.length-1], first=cp[0];
       const sea=cp.concat([[100,last[1]],[100,100],[first[0],100]]);
-      g+=`<polygon points="${sea.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')}" fill="#cfe1e8"/>`;
-      g+=`<path d="${pathD(cp)}" fill="none" stroke="#8fb6c2" stroke-width="1.1"/>`;
+      bg+=`<polygon points="${sea.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')}" fill="#cfe1e8"/>`;
+      bg+=`<path d="${pathD(cp)}" fill="none" stroke="#8fb6c2" stroke-width="1.1"/>`;
     }
     if(geo.river){
-      const rp=projPts(geo.river,box,W,H);
-      g+=`<path d="${pathD(rp)}" fill="none" stroke="#c3d9e4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`;
+      bg+=`<path d="${pathD(geo.river.map(c=>toPct(c[0],c[1])))}" fill="none" stroke="#c3d9e4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`;
     }
+    let bglbl='';
+    if(geo.label){const lp=toPct(geo.label.at[0],geo.label.at[1]);
+      bglbl=`<span class="maplbl" style="left:${lp[0].toFixed(1)}%;top:${lp[1].toFixed(1)}%">${geo.label.text}</span>`;}
+
+    /* real tiles */
+    const nmax=Math.pow(2,z);
+    const tx0=Math.floor(originX/256), tx1=Math.floor((originX+W)/256);
+    const ty0=Math.floor(originY/256), ty1=Math.floor((originY+H)/256);
+    let tiles='';
+    for(let tx=tx0;tx<=tx1;tx++)for(let ty=ty0;ty<=ty1;ty++){
+      if(ty<0||ty>=nmax) continue;
+      const wx=((tx%nmax)+nmax)%nmax;
+      const left=Math.round(tx*256-originX), top=Math.round(ty*256-originY);
+      tiles+=`<img class="tile" alt="" data-z="${z}" data-x="${wx}" data-y="${ty}" data-try="0" `
+           +`src="https://tile.openstreetmap.org/${z}/${wx}/${ty}.png" `
+           +`style="left:${left}px;top:${top}px" width="256" height="256" onerror="tileFallback(this)">`;
+    }
+
+    /* pins (decluttered) */
+    const P=declutter(items.map(m=>{const p=toPx(m.lat,m.lng);return {...m,px:p[0],py:p[1]};}),W,H,26);
+
+    /* route / canal annotation over tiles */
+    let anno='';
     if(kind==='journey'){
       const seq=P.concat([P[0]]);
-      g+=`<path d="${pathD(seq.map(p=>[p.lx,p.ly]))}" fill="none" stroke="#d0431f" stroke-width=".7" stroke-dasharray="2.4 2.6" opacity=".6"/>`;
+      anno+=`<path d="${pathD(seq.map(p=>[p.lx,p.ly]))}" fill="none" stroke="#d0431f" stroke-width=".7" stroke-dasharray="2.4 2.6" opacity=".7"/>`;
     } else if(kind==='canal'){
       const line=P.filter(p=>!/Carcassonne|Minerve/.test(p.name)).sort((a,b)=>a.lng-b.lng);
-      g+=`<path d="${pathD(line.map(p=>[p.lx,p.ly]))}" fill="none" stroke="#3f7f9b" stroke-width="1.7" opacity=".55"/>`;
+      anno+=`<path d="${pathD(line.map(p=>[p.lx,p.ly]))}" fill="none" stroke="#14584f" stroke-width="1.4" stroke-dasharray="1.4 2" opacity=".7"/>`;
     }
-    let html=`<svg class="mapbg" viewBox="0 0 100 100" preserveAspectRatio="none">${g}</svg>`;
-    // geographic label (as HTML so it isn't distorted by the stretched svg)
-    if(geo.label){const lp=projPts([geo.label.at],box,W,H)[0];
-      html+=`<span class="maplbl" style="left:${lp[0].toFixed(1)}%;top:${lp[1].toFixed(1)}%">${geo.label.text}</span>`;}
+
+    let html=`<svg class="bg" viewBox="0 0 100 100" preserveAspectRatio="none">${bg}</svg>${bglbl}`;
+    html+=tiles;
+    html+=`<svg class="anno" viewBox="0 0 100 100" preserveAspectRatio="none">${anno}</svg>`;
     P.forEach(m=>{
       const cls=pinClass(m,kind), planned=(m.id&&PLAN.has(m.id))?' planned':'';
       html+=`<button class="pin ${cls}${planned}" style="left:${m.lx.toFixed(2)}%;top:${m.ly.toFixed(2)}%" `
@@ -2316,6 +2350,7 @@ function buildMap(id,kind){
           +`<span class="dotmark">${pinLabelInner(m,kind)}</span>`
           +`<span class="plabel">${m.name}</span></button>`;
     });
+    html+=`<span class="attrib">&copy; OpenStreetMap contributors</span>`;
     el.innerHTML=html; el.appendChild(pop);
     el.querySelectorAll('.pin').forEach(b=>b.addEventListener('click',ev=>{
       ev.stopPropagation(); openPop(el,pop,b,kind);
