@@ -344,6 +344,53 @@ table.log b{color:var(--water2)}
 .planclear{margin-top:16px;width:100%;border:1px solid var(--line);background:#fff;border-radius:10px;padding:11px;
   font-family:var(--disp);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.03em;
   color:var(--signal2);cursor:pointer}
+
+:root{--am:#3f8fd6;--am-soft:#dcebf7;--heat:#dd7a1e;--heat-soft:#f6e7d4;--pm:#242b27;--pm-soft:#dde1dd;}
+/* day band labels, colour-coded */
+.bl.morn{color:var(--am)} .bl.hot{color:var(--heat)} .bl.eve{color:var(--pm)}
+/* new map pin types */
+.pin.stay .dotmark{width:23px;height:23px;background:#2e8b57;font-size:12px;color:#fff}
+.pin.pink .dotmark{width:26px;height:26px;background:#d6488f;font-size:14px;color:#fff}
+.pin.stay,.pin.pink{z-index:4}
+/* planned-pin rings by time band (override generic) */
+.pin.slot-morning .dotmark{box-shadow:0 0 0 3px #fff,0 0 0 6px var(--am),0 3px 9px rgba(13,63,56,.5)}
+.pin.slot-heat .dotmark{box-shadow:0 0 0 3px #fff,0 0 0 6px var(--heat),0 3px 9px rgba(13,63,56,.5)}
+.pin.slot-evening .dotmark{box-shadow:0 0 0 3px #fff,0 0 0 6px var(--pm),0 3px 9px rgba(13,63,56,.5)}
+/* zoom controls */
+.mapctl{position:absolute;right:8px;top:8px;z-index:7;display:flex;flex-direction:column;gap:5px}
+.zbtn{width:33px;height:33px;border:1px solid var(--line);background:rgba(255,255,255,.95);border-radius:9px;
+  font-size:20px;line-height:1;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 6px rgba(13,63,56,.25);font-family:var(--body)}
+.zbtn:active{background:var(--paper2)}
+/* key + legend swatches */
+.mapkey .kn.pink{background:#d6488f}
+.lg-alex{width:14px;height:14px;border-radius:50%;background:#d6488f;border:2px solid #fff;box-shadow:0 0 0 1px #d6488f}
+.lg-stay{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #2e8b57}
+/* time-slot picker on cards */
+.slotpick{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.slotlbl{flex-basis:100%;font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 1px}
+.slotbtn{flex:1;min-width:76px;border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:8px 6px;cursor:pointer;
+  font-family:var(--disp);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.02em;color:var(--ink2);
+  -webkit-tap-highlight-color:transparent;transition:all .12s}
+.slotbtn.morn{border-color:#bcd6ec;color:var(--am)} .slotbtn.heat{border-color:#eccfae;color:var(--heat)} .slotbtn.eve{border-color:#c9cec9;color:var(--pm)}
+.slotbtn.morn.on{background:var(--am);border-color:var(--am);color:#fff}
+.slotbtn.heat.on{background:var(--heat);border-color:var(--heat);color:#fff}
+.slotbtn.eve.on{background:var(--pm);border-color:var(--pm);color:#fff}
+.card.slot-morning{border-color:var(--am);box-shadow:0 0 0 1.5px var(--am),var(--sh)}
+.card.slot-heat{border-color:var(--heat);box-shadow:0 0 0 1.5px var(--heat),var(--sh)}
+.card.slot-evening{border-color:var(--pm);box-shadow:0 0 0 1.5px var(--pm),var(--sh)}
+/* slot picker inside a map popup */
+.popslots{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+.popslots .slotlbl{margin-bottom:2px}
+.popslots .slotbtn{min-width:56px;padding:6px 4px;font-size:12px}
+/* my-plan sheet groups, colour-coded */
+.plangroup.morn h4{color:var(--am);border-color:var(--am)}
+.plangroup.heat h4{color:var(--heat);border-color:var(--heat)}
+.plangroup.eve h4{color:var(--pm);border-color:var(--pm)}
+.pi-city{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-left:4px}
+/* fix cut-off section header meta */
+.board{flex-wrap:wrap;row-gap:2px}
+.board .meta{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -418,7 +465,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="17"> Done</label>
   </div>
   <div class="transit mono">EY33 · AUH→CDG T1, lands 19:20</div>
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">EY33 departs AUH 14:00 — travel day.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">In the air.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Pre-booked van to Hotel Eiffel Petit Louvre (~21:00). Easy dinner nearby, then sleep — no sightseeing.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">EY33 departs AUH 14:00 — travel day.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">In the air.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Pre-booked van to Hotel Eiffel Petit Louvre (~21:00). Easy dinner nearby, then sleep — no sightseeing.</span></div></div>
   
 </article>
 
@@ -432,7 +479,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="18"> Done</label>
   </div>
   
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Extra Magic Time — Peter Pan’s Flight first, then Fantasyland (it’s a small world, Dumbo, Carousel, Snow White). Then Big Thunder (if 1.02 m+), Pirates, Buzz.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">13:00 heat-block lunch at Blue Lagoon (inside Pirates); 14:00–18:00 hotel rest or indoor rides (Phantom Manor, small world).</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Parade, castle at dusk, nighttime show — ear defenders ready.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Extra Magic Time — Peter Pan’s Flight first, then Fantasyland (it’s a small world, Dumbo, Carousel, Snow White). Then Big Thunder (if 1.02 m+), Pirates, Buzz.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">13:00 heat-block lunch at Blue Lagoon (inside Pirates); 14:00–18:00 hotel rest or indoor rides (Phantom Manor, small world).</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Parade, castle at dusk, nighttime show — ear defenders ready.</span></div></div>
   <div class="anchors"><span class="anchor adult"><b>Adult</b> Rider Switch the big coasters</span><span class="anchor alex"><b>Alexander</b> Castle, carousel, Big Thunder</span></div><div class="bookline mono"><span class="bookpill">Book</span> Character-meal + heat-block lunch tables (app)</div>
 </article>
 
@@ -446,7 +493,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="19"> Done</label>
   </div>
   <div class="transit mono">Transfer to Normandy Le Chantier</div>
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Extra Magic Time — World of Frozen: claim the free Frozen Ever After virtual queue, then Raiponce; meet Anna / Elsa / Olaf. Then Ratatouille, Cars, Spider-Man W.E.B.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">13:00 lunch at Bistrot Chez Rémy; rest / indoor, then pack and transfer to Paris.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Low-key Paris — Palais Royal gardens + a Tuileries stroll (funfair if running), dinner near the hotel.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Extra Magic Time — World of Frozen: claim the free Frozen Ever After virtual queue, then Raiponce; meet Anna / Elsa / Olaf. Then Ratatouille, Cars, Spider-Man W.E.B.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">13:00 lunch at Bistrot Chez Rémy; rest / indoor, then pack and transfer to Paris.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Low-key Paris — Palais Royal gardens + a Tuileries stroll (funfair if running), dinner near the hotel.</span></div></div>
   <div class="anchors"><span class="anchor adult"><b>Adult</b> Palais Royal in evening light</span><span class="anchor alex"><b>Alexander</b> Tuileries funfair / carousel + crêpe</span></div>
 </article>
 
@@ -460,7 +507,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="20"> Done</label>
   </div>
   <div class="transit mono">OUIGO 7885 · Gare de Lyon 09:42 → Narbonne 14:22, taxi to Homps</div>
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Southbound train, then taxi Narbonne→Homps (~25–30 min); arrive ~15:00. Provision fully at Homps / Olonzac.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Lac de Jouarres — lifeguarded swim + inflatable water park; Homps playground.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Dinner in Homps; moor at Homps.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Southbound train, then taxi Narbonne→Homps (~25–30 min); arrive ~15:00. Provision fully at Homps / Olonzac.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Lac de Jouarres — lifeguarded swim + inflatable water park; Homps playground.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Dinner in Homps; moor at Homps.</span></div></div>
   <div class="anchors"><span class="anchor alex"><b>Alexander</b> Lake inflatables</span></div><div class="bookline mono"><span class="bookpill">Book</span> Reconfirm the 24 Jul early Homps→Narbonne taxi</div>
 </article>
 
@@ -474,7 +521,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="21"> Done</label>
   </div>
   <div class="transit mono">Homps → Argens / Paraza</div>
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Gentle cruise east to Argens-Minervois / Paraza — canalside lunch, Château de Paraza grounds, a towpath bike ride.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Shaded siesta aboard or the Paraza cellar; slow-cruise past the Répudre aqueduct.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">BBQ on deck or a village dinner; cruise back toward Homps.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Gentle cruise east to Argens-Minervois / Paraza — canalside lunch, Château de Paraza grounds, a towpath bike ride.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Shaded siesta aboard or the Paraza cellar; slow-cruise past the Répudre aqueduct.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">BBQ on deck or a village dinner; cruise back toward Homps.</span></div></div>
   <div class="anchors"><span class="anchor alex"><b>Alexander</b> Explore the château courtyard; watch a lock fill</span></div>
 </article>
 
@@ -488,7 +535,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="22"> Done</label>
   </div>
   <div class="transit mono">Taxi from Homps ~30 min</div>
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Carcassonne — the medieval Cité (free) + Château Comtal &amp; ramparts (book ahead). Go early while it’s cool and quiet; drop at Porte Narbonnaise.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Café in the shaded Cité, or head back for Lac de Jouarres.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Dinner in Homps; moor at Homps.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Carcassonne — the medieval Cité (free) + Château Comtal &amp; ramparts (book ahead). Go early while it’s cool and quiet; drop at Porte Narbonnaise.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Café in the shaded Cité, or head back for Lac de Jouarres.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Dinner in Homps; moor at Homps.</span></div></div>
   <div class="anchors"><span class="anchor adult"><b>Adult</b> The ramparts (you + Buena; grandparents take a café)</span><span class="anchor alex"><b>Alexander</b> Castle towers, drawbridge, ice cream</span></div><div class="bookline mono"><span class="bookpill">Book</span> Château Comtal ticket (€19, Alexander free)</div><div class="flag"><b>Heads-up:</b> the Place Carnot market runs Tue/Thu/Sat mornings, so Wed 22 has none. If the market matters, do Carcassonne on Tue 21 instead — otherwise the citadel itself is the draw.</div>
 </article>
 
@@ -502,7 +549,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="23"> Done</label>
   </div>
   
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Short cruise, or Lac de Jouarres / Olonzac — be moored at Homps by evening.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Pack; fuel / water / admin; confirm tomorrow’s 09:00 walk-through.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Last dinner in Homps.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Short cruise, or Lac de Jouarres / Olonzac — be moored at Homps by evening.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Pack; fuel / water / admin; confirm tomorrow’s 09:00 walk-through.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Last dinner in Homps.</span></div></div>
   <div class="bookline mono"><span class="bookpill">Book</span> Reconfirm the early taxi for the 10:36 AVE</div>
 </article>
 
@@ -516,7 +563,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="24"> Done</label>
   </div>
   <div class="flag tight"><b>Tight:</b> Trip’s tightest link — boat back by 09:00, taxi straight to the 10:36 train.</div><div class="transit mono">09:00 handover · AVE 09730 Narbonne 10:36 → Sants 12:36</div>
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">09:00 boat handover; pre-booked taxi to Narbonne for the 10:36 AVE. At the Meliá (Poblenou) from ~15:00.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">First hour: supermarket for water, sunscreen, fruit, snacks. Settle in; Meliá pool (09:00–20:00).</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Easy Poblenou dinner near the hotel.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">09:00 boat handover; pre-booked taxi to Narbonne for the 10:36 AVE. At the Meliá (Poblenou) from ~15:00.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">First hour: supermarket for water, sunscreen, fruit, snacks. Settle in; Meliá pool (09:00–20:00).</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Easy Poblenou dinner near the hotel.</span></div></div>
   
 </article>
 
@@ -530,7 +577,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="25"> Done</label>
   </div>
   
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Sagrada Família ~9:00 — pair with Hospital de Sant Pau next door if keen (10-min walk, cool, quiet).</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Meliá pool / rest.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Poblenou dinner; Magic Fountain of Montjuïc (runs Thu–Sat — check barcelona.cat same day).</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Sagrada Família ~9:00 — pair with Hospital de Sant Pau next door if keen (10-min walk, cool, quiet).</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Meliá pool / rest.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Poblenou dinner; Magic Fountain of Montjuïc (runs Thu–Sat — check barcelona.cat same day).</span></div></div>
   <div class="anchors"><span class="anchor alex"><b>Alexander</b> Find the stone tortoise; the coloured ‘sunset’ glass</span></div><div class="bookline mono"><span class="bookpill">Book</span> Sagrada Família timed slot (incl. Alexander’s free ticket)</div>
 </article>
 
@@ -544,7 +591,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="26"> Done</label>
   </div>
   
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Park Güell 9:30 via the Vallcarca outdoor escalators (kinder than the Lesseps climb).</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Casa Batlló, the Cathedral, or the Aquarium — all cool and indoor.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Port Vell marina + gelato.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Park Güell 9:30 via the Vallcarca outdoor escalators (kinder than the Lesseps climb).</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Casa Batlló, the Cathedral, or the Aquarium — all cool and indoor.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Port Vell marina + gelato.</span></div></div>
   <div class="anchors"><span class="anchor alex"><b>Alexander</b> Mosaic salamander on the Dragon Stairway</span></div><div class="bookline mono"><span class="bookpill">Book</span> Park Güell timed slot (Alexander’s free ticket too)</div>
 </article>
 
@@ -558,7 +605,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="27"> Done</label>
   </div>
   
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Beach early (Nova Icària), or Parc de la Ciutadella — row-boats on the lake + playgrounds.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Pool / rest + packing — or give CosmoCaixa a half-day (superb, under-16 free).</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Final Barcelona dinner (several tapas spots close Sun — La Broqueta, El Portalón, Jesús stay open).</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Beach early (Nova Icària), or Parc de la Ciutadella — row-boats on the lake + playgrounds.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Pool / rest + packing — or give CosmoCaixa a half-day (superb, under-16 free).</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Final Barcelona dinner (several tapas spots close Sun — La Broqueta, El Portalón, Jesús stay open).</span></div></div>
   <div class="anchors"><span class="anchor alex"><b>Alexander</b> Row a boat on the Ciutadella lake</span></div>
 </article>
 
@@ -572,7 +619,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="28"> Done</label>
   </div>
   <div class="transit mono">FR3121 · Barcelona 16:35 → Beauvais 18:35, minivan to the Marais</div>
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Slow morning — last pool / beach and pack; pre-booked taxi or van to BCN airport (T-casual isn’t valid to the airport).</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">At the airport / in transit.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Pre-booked minivan Beauvais→Marais (~€200, arrive ~20:00). Dinner in the Marais at Charles V — no sightseeing.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Slow morning — last pool / beach and pack; pre-booked taxi or van to BCN airport (T-casual isn’t valid to the airport).</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">At the airport / in transit.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Pre-booked minivan Beauvais→Marais (~€200, arrive ~20:00). Dinner in the Marais at Charles V — no sightseeing.</span></div></div>
   
 </article>
 
@@ -586,7 +633,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="29"> Done</label>
   </div>
   
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Eiffel Tower 09:30 slot (lift to 2nd for the grandparents); Champ de Mars playground for Alexander.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">13:00 lunch (Rue Cler) → 14:30 Louvre (pre-booked, enter via Carrousel) → 16:45 coffee → back to base.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Freshen up; dinner ~19:00.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Eiffel Tower 09:30 slot (lift to 2nd for the grandparents); Champ de Mars playground for Alexander.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">13:00 lunch (Rue Cler) → 14:30 Louvre (pre-booked, enter via Carrousel) → 16:45 coffee → back to base.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Freshen up; dinner ~19:00.</span></div></div>
   <div class="anchors"><span class="anchor adult"><b>Adult</b> The Louvre</span><span class="anchor alex"><b>Alexander</b> Champ de Mars playground + the tower</span></div><div class="bookline mono"><span class="bookpill">Book</span> Eiffel + Louvre timed slots (Alexander’s free Louvre slot too)</div>
 </article>
 
@@ -600,7 +647,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="30"> Done</label>
   </div>
   
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Sainte-Chapelle (first slot) + Notre-Dame (free — reserve on the app ~2 days ahead); Square Jean XXIII + Berthillon for Alexander.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Back to base — shaded rest / Marais + Place des Vosges through the worst heat.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">Musée d’Orsay after 18:00 (€12, quiet, open to 21:45) — or a 1-hour evening Seine cruise.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Sainte-Chapelle (first slot) + Notre-Dame (free — reserve on the app ~2 days ahead); Square Jean XXIII + Berthillon for Alexander.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Back to base — shaded rest / Marais + Place des Vosges through the worst heat.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Musée d’Orsay after 18:00 (€12, quiet, open to 21:45) — or a 1-hour evening Seine cruise.</span></div></div>
   <div class="anchors"><span class="anchor adult"><b>Adult</b> Orsay, or the lit-monument cruise</span><span class="anchor alex"><b>Alexander</b> Berthillon ice cream + the boat</span></div><div class="bookline mono"><span class="bookpill">Book</span> Notre-Dame app slot (~2 days ahead); Orsay Thu-evening ticket</div>
 </article>
 
@@ -614,7 +661,7 @@ table.log b{color:var(--water2)}
     <label class="daydone"><input type="checkbox" data-day="31"> Done</label>
   </div>
   <div class="transit mono">EY34 · CDG T1 → AUH, departs 22:00</div>
-  <div class="bands"><div class="band"><span class="bl ">Morning</span><span class="bt">Checkout ~11:00, store bags. Marais wander (Place des Vosges), or Les Invalides for one more big one (armour + Napoleon, accessible).</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Galeries Lafayette rooftop — free Eiffel view, no climb, grandparent-friendly — + a final treat.</span></div><div class="band"><span class="bl ">Evening</span><span class="bt">~19:00 collect luggage; pre-booked van to CDG for the 22:00 flight home.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Checkout ~11:00, store bags. Marais wander (Place des Vosges), or Les Invalides for one more big one (armour + Napoleon, accessible).</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">Galeries Lafayette rooftop — free Eiffel view, no climb, grandparent-friendly — + a final treat.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">~19:00 collect luggage; pre-booked van to CDG for the 22:00 flight home.</span></div></div>
   <div class="anchors"><span class="anchor adult"><b>Adult</b> Invalides or the rooftop panorama</span><span class="anchor alex"><b>Alexander</b> Macarons + carousel at Galeries Lafayette</span></div>
 </article></div>
   </section>
@@ -628,11 +675,12 @@ table.log b{color:var(--water2)}
     </div>
     <div class="svgmap" id="map-paris"></div>
     <div class="maplegend">
-      <i><span class="lg-pin">1</span> ranked must-see pick</i>
-      <i><span class="lg-dot"></span> other listed site</i>
-      <i>tap a pin to open or add to plan</i>
+      <i><span class="lg-pin">1</span> must-see</i>
+      <i><span class="lg-alex"></span> Alexander spot</i>
+      <i><span class="lg-stay"></span> where we stay</i>
+      <i>pinch or +/&minus; to zoom &middot; tap a pin to plan it</i>
     </div>
-    <ol class="mapkey"><li><span class="kn">1</span>Eiffel Tower</li><li><span class="kn">2</span>Seine River Cruise</li><li><span class="kn">3</span>Les Invalides / Musée de l&#x27;Armée</li><li><span class="kn">4</span>Jardin du Luxembourg</li><li><span class="kn">5</span>Jardin des Tuileries</li><li><span class="kn">6</span>Champ de Mars</li><li><span class="kn">7</span>Place des Vosges</li><li><span class="kn">8</span>Louvre Museum</li><li><span class="kn">9</span>Musée d&#x27;Orsay</li><li><span class="kn">10</span>Notre-Dame de Paris</li><li><span class="kn">11</span>Galeries Lafayette Rooftop</li><li><span class="kn">12</span>Sainte-Chapelle</li><li><span class="kn">13</span>Montmartre &amp; Sacré-Cœur</li></ol>
+    <ol class="mapkey"><li><span class="kn ">1</span>Eiffel Tower</li><li><span class="kn pink">2</span>Seine River Cruise</li><li><span class="kn ">3</span>Les Invalides / Musée de l&#x27;Armée</li><li><span class="kn pink">4</span>Jardin du Luxembourg</li><li><span class="kn pink">5</span>Jardin des Tuileries</li><li><span class="kn pink">6</span>Champ de Mars</li><li><span class="kn pink">7</span>Place des Vosges</li><li><span class="kn ">8</span>Louvre Museum</li><li><span class="kn ">9</span>Musée d&#x27;Orsay</li><li><span class="kn ">10</span>Notre-Dame de Paris</li><li><span class="kn ">11</span>Galeries Lafayette Rooftop</li><li><span class="kn ">12</span>Sainte-Chapelle</li><li><span class="kn ">13</span>Montmartre &amp; Sacré-Cœur</li></ol>
     <div class="cards">
 <article class="card" data-city="Paris" data-plan-id="paris-eiffel-tower">
   <header class="card-hd">
@@ -670,9 +718,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Bir-Hakeim (M6), Champ de Mars–Tour Eiffel RER C, École Militaire (M8)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-eiffel-tower" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-eiffel-tower"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-louvre-museum">
@@ -711,9 +757,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Palais Royal–Musée du Louvre (M1/M7), Louvre–Rivoli (M1)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-louvre-museum" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-louvre-museum"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-mus-e-d-orsay">
@@ -752,9 +796,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Solférino (M12), Musée d&#x27;Orsay RER C</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-mus-e-d-orsay" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-mus-e-d-orsay"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-sainte-chapelle">
@@ -793,9 +835,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Cité (M4), Châtelet (M1/M4/M7/M11/M14)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-sainte-chapelle" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-sainte-chapelle"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-notre-dame-de-paris">
@@ -834,9 +874,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Cité (M4), Saint-Michel Notre-Dame RER B/C</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-notre-dame-de-paris" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-notre-dame-de-paris"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-seine-river-cruise">
@@ -875,9 +913,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Pont Neuf (M7) or Alma-Marceau (M9) depending operator</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-seine-river-cruise" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-seine-river-cruise"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-les-invalides-mus-e-de-l-arm-e">
@@ -916,9 +952,7 @@ table.log b{color:var(--water2)}
       <span class="metro">La Tour-Maubourg (M8), Invalides (M8/M13/RER C), Varenne (M13)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-les-invalides-mus-e-de-l-arm-e" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-les-invalides-mus-e-de-l-arm-e"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-montmartre-sacr-c-ur">
@@ -957,9 +991,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Anvers (M2) + funicular; Abbesses (M12) is scenic but stairs</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-montmartre-sacr-c-ur" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-montmartre-sacr-c-ur"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-arc-de-triomphe">
@@ -998,9 +1030,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Charles de Gaulle–Étoile (M1/M2/M6/RER A)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-arc-de-triomphe" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-arc-de-triomphe"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-galeries-lafayette-rooftop">
@@ -1039,9 +1069,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Chaussée d&#x27;Antin–La Fayette (M7/M9), Opéra (M3/M7/M8/RER A)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-galeries-lafayette-rooftop" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-galeries-lafayette-rooftop"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-panth-on">
@@ -1080,9 +1108,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Luxembourg RER B, Cardinal Lemoine (M10)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-panth-on" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-panth-on"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-jardin-d-acclimatation">
@@ -1121,9 +1147,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Les Sablons (M1)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-jardin-d-acclimatation" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-jardin-d-acclimatation"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-jardin-du-luxembourg">
@@ -1162,9 +1186,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Luxembourg RER B, Odéon (M4/M10)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-jardin-du-luxembourg" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-jardin-du-luxembourg"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-jardin-des-tuileries">
@@ -1203,9 +1225,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Tuileries (M1), Concorde (M1/M8/M12)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-jardin-des-tuileries" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-jardin-des-tuileries"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-champ-de-mars">
@@ -1244,9 +1264,7 @@ table.log b{color:var(--water2)}
       <span class="metro">École Militaire (M8), Bir-Hakeim (M6)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-champ-de-mars" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-champ-de-mars"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-place-des-vosges">
@@ -1285,9 +1303,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Saint-Paul (M1), Bastille (M1/M5/M8), Chemin Vert (M8)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="paris-place-des-vosges" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="paris-place-des-vosges"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article></div>
   </section>
 
@@ -1360,9 +1376,7 @@ table.log b{color:var(--water2)}
       </div>
     </div>
   </footer>
-  <button class="planbtn" data-id="canal-homps-base" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="canal-homps-base"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-lac-de-jouarres">
@@ -1383,9 +1397,7 @@ table.log b{color:var(--water2)}
       </div>
     </div>
   </footer>
-  <button class="planbtn" data-id="canal-lac-de-jouarres" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="canal-lac-de-jouarres"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-olonzac">
@@ -1406,9 +1418,7 @@ table.log b{color:var(--water2)}
       </div>
     </div>
   </footer>
-  <button class="planbtn" data-id="canal-olonzac" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="canal-olonzac"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-argens-minervois">
@@ -1429,9 +1439,7 @@ table.log b{color:var(--water2)}
       </div>
     </div>
   </footer>
-  <button class="planbtn" data-id="canal-argens-minervois" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="canal-argens-minervois"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-roubia">
@@ -1452,9 +1460,7 @@ table.log b{color:var(--water2)}
       </div>
     </div>
   </footer>
-  <button class="planbtn" data-id="canal-roubia" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="canal-roubia"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-paraza">
@@ -1475,9 +1481,7 @@ table.log b{color:var(--water2)}
       </div>
     </div>
   </footer>
-  <button class="planbtn" data-id="canal-paraza" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="canal-paraza"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-ventenac-en-minervois">
@@ -1498,9 +1502,7 @@ table.log b{color:var(--water2)}
       </div>
     </div>
   </footer>
-  <button class="planbtn" data-id="canal-ventenac-en-minervois" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="canal-ventenac-en-minervois"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-le-somail">
@@ -1521,9 +1523,7 @@ table.log b{color:var(--water2)}
       </div>
     </div>
   </footer>
-  <button class="planbtn" data-id="canal-le-somail" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="canal-le-somail"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-carcassonne-cit">
@@ -1544,9 +1544,7 @@ table.log b{color:var(--water2)}
       </div>
     </div>
   </footer>
-  <button class="planbtn" data-id="canal-carcassonne-cit" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="canal-carcassonne-cit"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-minerve">
@@ -1567,9 +1565,7 @@ table.log b{color:var(--water2)}
       </div>
     </div>
   </footer>
-  <button class="planbtn" data-id="canal-minerve" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="canal-minerve"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article></div>
   </section>
 
@@ -1582,11 +1578,12 @@ table.log b{color:var(--water2)}
     </div>
     <div class="svgmap" id="map-barcelona"></div>
     <div class="maplegend">
-      <i><span class="lg-pin">1</span> ranked must-see pick</i>
-      <i><span class="lg-dot"></span> other listed site</i>
-      <i>tap a pin to open or add to plan</i>
+      <i><span class="lg-pin">1</span> must-see</i>
+      <i><span class="lg-alex"></span> Alexander spot</i>
+      <i><span class="lg-stay"></span> where we stay</i>
+      <i>pinch or +/&minus; to zoom &middot; tap a pin to plan it</i>
     </div>
-    <ol class="mapkey"><li><span class="kn">1</span>Sagrada Família</li><li><span class="kn">2</span>Casa Batlló</li><li><span class="kn">3</span>L&#x27;Aquàrium de Barcelona</li><li><span class="kn">4</span>CosmoCaixa</li><li><span class="kn">5</span>Parc de la Ciutadella</li><li><span class="kn">6</span>Nova Icària Beach</li><li><span class="kn">7</span>Barcelona Cathedral</li><li><span class="kn">8</span>Hospital de Sant Pau</li><li><span class="kn">9</span>Port Vell</li><li><span class="kn">10</span>Passeig de Gràcia</li><li><span class="kn">11</span>Park Güell</li></ol>
+    <ol class="mapkey"><li><span class="kn ">1</span>Sagrada Família</li><li><span class="kn ">2</span>Casa Batlló</li><li><span class="kn pink">3</span>L&#x27;Aquàrium de Barcelona</li><li><span class="kn pink">4</span>CosmoCaixa</li><li><span class="kn pink">5</span>Parc de la Ciutadella</li><li><span class="kn pink">6</span>Nova Icària Beach</li><li><span class="kn ">7</span>Barcelona Cathedral</li><li><span class="kn ">8</span>Hospital de Sant Pau</li><li><span class="kn ">9</span>Port Vell</li><li><span class="kn ">10</span>Passeig de Gràcia</li><li><span class="kn pink">11</span>Park Güell</li></ol>
     <div class="cards">
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-sagrada-fam-lia">
   <header class="card-hd">
@@ -1624,9 +1621,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Sagrada Família (L2/L5)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-sagrada-fam-lia" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-sagrada-fam-lia"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-park-g-ell">
@@ -1665,9 +1660,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Vallcarca (L3) + outdoor escalators; Lesseps (L3)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-park-g-ell" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-park-g-ell"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-casa-batll">
@@ -1706,9 +1699,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Passeig de Gràcia (L2/L3/L4)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-casa-batll" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-casa-batll"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-la-pedrera-casa-mil">
@@ -1747,9 +1738,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Diagonal (L3/L5), Passeig de Gràcia</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-la-pedrera-casa-mil" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-la-pedrera-casa-mil"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-l-aqu-rium-de-barcelona">
@@ -1788,9 +1777,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Barceloneta (L4) or Drassanes (L3)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-l-aqu-rium-de-barcelona" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-l-aqu-rium-de-barcelona"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-cosmocaixa">
@@ -1829,9 +1816,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Av. Tibidabo FGC + bus 196</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-cosmocaixa" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-cosmocaixa"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-parc-de-la-ciutadella">
@@ -1870,9 +1855,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Arc de Triomf (L1) or Ciutadella–Vila Olímpica (L4)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-parc-de-la-ciutadella" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-parc-de-la-ciutadella"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-nova-ic-ria-beach">
@@ -1911,9 +1894,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Ciutadella–Vila Olímpica (L4) / Poblenou (L4)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-nova-ic-ria-beach" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-nova-ic-ria-beach"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-barcelona-cathedral">
@@ -1952,9 +1933,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Jaume I (L4), Liceu (L3), Urquinaona (L1/L4)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-barcelona-cathedral" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-barcelona-cathedral"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-hospital-de-sant-pau">
@@ -1993,9 +1972,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Sant Pau | Dos de Maig (L5), Sagrada Família (L2/L5)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-hospital-de-sant-pau" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-hospital-de-sant-pau"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-passeig-de-gr-cia">
@@ -2034,9 +2011,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Passeig de Gràcia (L2/L3/L4), Diagonal (L3/L5)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-passeig-de-gr-cia" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-passeig-de-gr-cia"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-port-vell">
@@ -2075,9 +2050,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Barceloneta (L4), Drassanes (L3)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-port-vell" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-port-vell"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-montju-c-cable-car">
@@ -2116,9 +2089,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Paral·lel (L2/L3) + funicular then cable car</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-montju-c-cable-car" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-montju-c-cable-car"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-magic-fountain-of-montju-c">
@@ -2157,9 +2128,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Espanya (L1/L3)</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-magic-fountain-of-montju-c" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-magic-fountain-of-montju-c"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-bunkers-del-carmel">
@@ -2198,9 +2167,7 @@ table.log b{color:var(--water2)}
       <span class="metro">Bus/taxi closest; metro Alfons X + uphill</span>
     </div>
   </footer>
-  <button class="planbtn" data-id="barcelona-bunkers-del-carmel" aria-pressed="false">
-    <span class="tick"></span><span class="lbl-add">Add to plan</span><span class="lbl-added">In your plan</span>
-  </button>
+  <div class="slotpick" data-id="barcelona-bunkers-del-carmel"><span class="slotlbl">Plan for:</span><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div>
 </article></div>
   </section>
 
@@ -2222,17 +2189,20 @@ table.log b{color:var(--water2)}
 </div>
 
 <script>
-const MAP_DATA = {"paris": [{"id": "paris-eiffel-tower", "name": "Eiffel Tower", "lat": 48.8584, "lng": 2.2945, "rank": 1, "must": true, "overall": 5, "url": "https://ticket.toureiffel.paris/en", "dir": "https://www.openstreetmap.org/?mlat=48.8584&mlon=2.2945#map=16/48.8584/2.2945", "city": "Paris"}, {"id": "paris-louvre-museum", "name": "Louvre Museum", "lat": 48.8606, "lng": 2.3376, "rank": 8, "must": true, "overall": 5, "url": "https://ticket.louvre.fr/en", "dir": "https://www.openstreetmap.org/?mlat=48.8606&mlon=2.3376#map=16/48.8606/2.3376", "city": "Paris"}, {"id": "paris-mus-e-d-orsay", "name": "Mus\u00e9e d'Orsay", "lat": 48.86, "lng": 2.3266, "rank": 9, "must": true, "overall": 5, "url": "https://billetterie.musee-orsay.fr/billets-d-entree-au-musee-d-orsay-expo-css5-museeorsay-lgen-pg1-rg28911.html", "dir": "https://www.openstreetmap.org/?mlat=48.86&mlon=2.3266#map=16/48.86/2.3266", "city": "Paris"}, {"id": "paris-sainte-chapelle", "name": "Sainte-Chapelle", "lat": 48.8554, "lng": 2.345, "rank": 12, "must": true, "overall": 4, "url": "https://tickets.monuments-nationaux.fr/en-GB/families?site=2035141861660400306", "dir": "https://www.openstreetmap.org/?mlat=48.8554&mlon=2.345#map=16/48.8554/2.345", "city": "Paris"}, {"id": "paris-notre-dame-de-paris", "name": "Notre-Dame de Paris", "lat": 48.853, "lng": 2.3499, "rank": 10, "must": true, "overall": 5, "url": "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", "dir": "https://www.openstreetmap.org/?mlat=48.853&mlon=2.3499#map=16/48.853/2.3499", "city": "Paris"}, {"id": "paris-seine-river-cruise", "name": "Seine River Cruise", "lat": 48.8565, "lng": 2.341, "rank": 2, "must": true, "overall": 5, "url": "https://www.vedettesdupontneuf.com/cruises/", "dir": "https://www.openstreetmap.org/?mlat=48.8565&mlon=2.341#map=16/48.8565/2.341", "city": "Paris"}, {"id": "paris-les-invalides-mus-e-de-l-arm-e", "name": "Les Invalides / Mus\u00e9e de l'Arm\u00e9e", "lat": 48.8566, "lng": 2.3125, "rank": 3, "must": true, "overall": 5, "url": "https://billetterie.musee-armee.fr/en-GB/products", "dir": "https://www.openstreetmap.org/?mlat=48.8566&mlon=2.3125#map=16/48.8566/2.3125", "city": "Paris"}, {"id": "paris-montmartre-sacr-c-ur", "name": "Montmartre & Sacr\u00e9-C\u0153ur", "lat": 48.8867, "lng": 2.3431, "rank": 13, "must": true, "overall": 4, "url": "https://www.sacre-coeur-montmartre.com/english/", "dir": "https://www.openstreetmap.org/?mlat=48.8867&mlon=2.3431#map=16/48.8867/2.3431", "city": "Paris"}, {"id": "paris-arc-de-triomphe", "name": "Arc de Triomphe", "lat": 48.8738, "lng": 2.295, "rank": 0, "must": false, "overall": 4, "url": "https://tickets.monuments-nationaux.fr/en-GB/families?site=2035141861660400317", "dir": "https://www.openstreetmap.org/?mlat=48.8738&mlon=2.295#map=16/48.8738/2.295", "city": "Paris"}, {"id": "paris-galeries-lafayette-rooftop", "name": "Galeries Lafayette Rooftop", "lat": 48.8738, "lng": 2.332, "rank": 11, "must": true, "overall": 5, "url": "https://haussmann.galerieslafayette.com/en/terrace/", "dir": "https://www.openstreetmap.org/?mlat=48.8738&mlon=2.332#map=16/48.8738/2.332", "city": "Paris"}, {"id": "paris-panth-on", "name": "Panth\u00e9on", "lat": 48.8462, "lng": 2.3464, "rank": 0, "must": false, "overall": 4, "url": "https://tickets.monuments-nationaux.fr/en-GB/families?site=2035141861660400318", "dir": "https://www.openstreetmap.org/?mlat=48.8462&mlon=2.3464#map=16/48.8462/2.3464", "city": "Paris"}, {"id": "paris-jardin-d-acclimatation", "name": "Jardin d'Acclimatation", "lat": 48.8783, "lng": 2.2637, "rank": 0, "must": false, "overall": 4, "url": "https://www.jardindacclimatation.fr/", "dir": "https://www.openstreetmap.org/?mlat=48.8783&mlon=2.2637#map=16/48.8783/2.2637", "city": "Paris"}, {"id": "paris-jardin-du-luxembourg", "name": "Jardin du Luxembourg", "lat": 48.8462, "lng": 2.3372, "rank": 4, "must": true, "overall": 5, "url": "https://jardin.senat.fr/", "dir": "https://www.openstreetmap.org/?mlat=48.8462&mlon=2.3372#map=16/48.8462/2.3372", "city": "Paris"}, {"id": "paris-jardin-des-tuileries", "name": "Jardin des Tuileries", "lat": 48.8635, "lng": 2.3275, "rank": 5, "must": true, "overall": 5, "url": "https://www.paris.fr/lieux/jardin-des-tuileries-1795", "dir": "https://www.openstreetmap.org/?mlat=48.8635&mlon=2.3275#map=16/48.8635/2.3275", "city": "Paris"}, {"id": "paris-champ-de-mars", "name": "Champ de Mars", "lat": 48.8556, "lng": 2.2986, "rank": 6, "must": true, "overall": 5, "url": "https://www.paris.fr/lieux/parc-du-champ-de-mars-1807", "dir": "https://www.openstreetmap.org/?mlat=48.8556&mlon=2.2986#map=16/48.8556/2.2986", "city": "Paris"}, {"id": "paris-place-des-vosges", "name": "Place des Vosges", "lat": 48.8554, "lng": 2.3655, "rank": 7, "must": true, "overall": 5, "url": "https://www.paris.fr/lieux/place-des-vosges-1812", "dir": "https://www.openstreetmap.org/?mlat=48.8554&mlon=2.3655#map=16/48.8554/2.3655", "city": "Paris"}], "barcelona": [{"id": "barcelona-sagrada-fam-lia", "name": "Sagrada Fam\u00edlia", "lat": 41.4036, "lng": 2.1744, "rank": 1, "must": true, "overall": 5, "url": "https://sagradafamilia.org/en/tickets", "dir": "https://www.openstreetmap.org/?mlat=41.4036&mlon=2.1744#map=16/41.4036/2.1744", "city": "Barcelona"}, {"id": "barcelona-park-g-ell", "name": "Park G\u00fcell", "lat": 41.4145, "lng": 2.1527, "rank": 11, "must": true, "overall": 5, "url": "https://parkguell.barcelona/en/buy-tickets", "dir": "https://www.openstreetmap.org/?mlat=41.4145&mlon=2.1527#map=16/41.4145/2.1527", "city": "Barcelona"}, {"id": "barcelona-casa-batll", "name": "Casa Batll\u00f3", "lat": 41.3917, "lng": 2.165, "rank": 2, "must": true, "overall": 5, "url": "https://www.casabatllo.es/en/online-tickets/", "dir": "https://www.openstreetmap.org/?mlat=41.3917&mlon=2.165#map=16/41.3917/2.165", "city": "Barcelona"}, {"id": "barcelona-la-pedrera-casa-mil", "name": "La Pedrera / Casa Mil\u00e0", "lat": 41.3954, "lng": 2.162, "rank": 0, "must": false, "overall": 4, "url": "https://www.lapedrera.com/en/tickets/", "dir": "https://www.openstreetmap.org/?mlat=41.3954&mlon=2.162#map=16/41.3954/2.162", "city": "Barcelona"}, {"id": "barcelona-l-aqu-rium-de-barcelona", "name": "L'Aqu\u00e0rium de Barcelona", "lat": 41.3765, "lng": 2.1836, "rank": 3, "must": true, "overall": 5, "url": "https://www.aquariumbcn.com/en/visit/prices/", "dir": "https://www.openstreetmap.org/?mlat=41.3765&mlon=2.1836#map=16/41.3765/2.1836", "city": "Barcelona"}, {"id": "barcelona-cosmocaixa", "name": "CosmoCaixa", "lat": 41.4118, "lng": 2.1339, "rank": 4, "must": true, "overall": 5, "url": "https://cosmocaixa.org/es/", "dir": "https://www.openstreetmap.org/?mlat=41.4118&mlon=2.1339#map=16/41.4118/2.1339", "city": "Barcelona"}, {"id": "barcelona-parc-de-la-ciutadella", "name": "Parc de la Ciutadella", "lat": 41.3888, "lng": 2.187, "rank": 5, "must": true, "overall": 5, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/parks-and-gardens/parc-de-la-ciutadella_92086011952.html", "dir": "https://www.openstreetmap.org/?mlat=41.3888&mlon=2.187#map=16/41.3888/2.187", "city": "Barcelona"}, {"id": "barcelona-nova-ic-ria-beach", "name": "Nova Ic\u00e0ria Beach", "lat": 41.3915, "lng": 2.2005, "rank": 6, "must": true, "overall": 5, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/nova-icaria-beach_92086011905.html", "dir": "https://www.openstreetmap.org/?mlat=41.3915&mlon=2.2005#map=16/41.3915/2.2005", "city": "Barcelona"}, {"id": "barcelona-barcelona-cathedral", "name": "Barcelona Cathedral", "lat": 41.3839, "lng": 2.1762, "rank": 7, "must": true, "overall": 5, "url": "https://catedralbcn.org/", "dir": "https://www.openstreetmap.org/?mlat=41.3839&mlon=2.1762#map=16/41.3839/2.1762", "city": "Barcelona"}, {"id": "barcelona-hospital-de-sant-pau", "name": "Hospital de Sant Pau", "lat": 41.4136, "lng": 2.1744, "rank": 8, "must": true, "overall": 5, "url": "https://santpaubarcelona.org/en/", "dir": "https://www.openstreetmap.org/?mlat=41.4136&mlon=2.1744#map=16/41.4136/2.1744", "city": "Barcelona"}, {"id": "barcelona-passeig-de-gr-cia", "name": "Passeig de Gr\u00e0cia", "lat": 41.393, "lng": 2.1637, "rank": 10, "must": true, "overall": 5, "url": "https://www.barcelonaturisme.com/wv3/en/page/1241/passeig-de-gracia.html", "dir": "https://www.openstreetmap.org/?mlat=41.393&mlon=2.1637#map=16/41.393/2.1637", "city": "Barcelona"}, {"id": "barcelona-port-vell", "name": "Port Vell", "lat": 41.3758, "lng": 2.183, "rank": 9, "must": true, "overall": 5, "url": "https://www.barcelonaturisme.com/wv3/en/page/64/port-vell.html", "dir": "https://www.openstreetmap.org/?mlat=41.3758&mlon=2.183#map=16/41.3758/2.183", "city": "Barcelona"}, {"id": "barcelona-montju-c-cable-car", "name": "Montju\u00efc Cable Car", "lat": 41.3641, "lng": 2.1641, "rank": 0, "must": false, "overall": 3, "url": "https://www.telefericdemontjuic.cat/en/tickets", "dir": "https://www.openstreetmap.org/?mlat=41.3641&mlon=2.1641#map=16/41.3641/2.1641", "city": "Barcelona"}, {"id": "barcelona-magic-fountain-of-montju-c", "name": "Magic Fountain of Montju\u00efc", "lat": 41.3711, "lng": 2.1517, "rank": 0, "must": false, "overall": 4, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/magic-fountain", "dir": "https://www.openstreetmap.org/?mlat=41.3711&mlon=2.1517#map=16/41.3711/2.1517", "city": "Barcelona"}, {"id": "barcelona-bunkers-del-carmel", "name": "Bunkers del Carmel", "lat": 41.4194, "lng": 2.162, "rank": 0, "must": false, "overall": 3, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/parks-and-gardens/turo-de-la-rovira_99400393480.html", "dir": "https://www.openstreetmap.org/?mlat=41.4194&mlon=2.162#map=16/41.4194/2.162", "city": "Barcelona"}], "canal": [{"id": "canal-homps-base", "name": "Homps (base)", "lat": 43.2712, "lng": 2.7176, "stars": 3, "role": "Home port", "url": "https://www.openstreetmap.org/?mlat=43.2712&mlon=2.7176#map=15/43.2712/2.7176", "dir": "https://www.openstreetmap.org/?mlat=43.2712&mlon=2.7176#map=15/43.2712/2.7176", "city": "Canal"}, {"id": "canal-lac-de-jouarres", "name": "Lac de Jouarres", "lat": 43.268, "lng": 2.73, "stars": 5, "role": "Alexander heat-block", "url": "https://www.openstreetmap.org/?mlat=43.268&mlon=2.73#map=15/43.268/2.73", "dir": "https://www.openstreetmap.org/?mlat=43.268&mlon=2.73#map=15/43.268/2.73", "city": "Canal"}, {"id": "canal-olonzac", "name": "Olonzac", "lat": 43.279, "lng": 2.736, "stars": 3, "role": "Market town", "url": "https://www.openstreetmap.org/?mlat=43.279&mlon=2.736#map=15/43.279/2.736", "dir": "https://www.openstreetmap.org/?mlat=43.279&mlon=2.736#map=15/43.279/2.736", "city": "Canal"}, {"id": "canal-argens-minervois", "name": "Argens-Minervois", "lat": 43.2637, "lng": 2.7566, "stars": 3, "role": "Quick wander ~1 hr", "url": "https://www.openstreetmap.org/?mlat=43.2637&mlon=2.7566#map=15/43.2637/2.7566", "dir": "https://www.openstreetmap.org/?mlat=43.2637&mlon=2.7566#map=15/43.2637/2.7566", "city": "Canal"}, {"id": "canal-roubia", "name": "Roubia", "lat": 43.2664, "lng": 2.7876, "stars": 3, "role": "Food stop", "url": "https://www.openstreetmap.org/?mlat=43.2664&mlon=2.7876#map=15/43.2664/2.7876", "dir": "https://www.openstreetmap.org/?mlat=43.2664&mlon=2.7876#map=15/43.2664/2.7876", "city": "Canal"}, {"id": "canal-paraza", "name": "Paraza", "lat": 43.2559, "lng": 2.8028, "stars": 4, "role": "Lunch stop 1\u20132 hrs", "url": "https://www.openstreetmap.org/?mlat=43.2559&mlon=2.8028#map=15/43.2559/2.8028", "dir": "https://www.openstreetmap.org/?mlat=43.2559&mlon=2.8028#map=15/43.2559/2.8028", "city": "Canal"}, {"id": "canal-ventenac-en-minervois", "name": "Ventenac-en-Minervois", "lat": 43.2606, "lng": 2.8206, "stars": 3, "role": "Quayside pause", "url": "https://www.openstreetmap.org/?mlat=43.2606&mlon=2.8206#map=15/43.2606/2.8206", "dir": "https://www.openstreetmap.org/?mlat=43.2606&mlon=2.8206#map=15/43.2606/2.8206", "city": "Canal"}, {"id": "canal-le-somail", "name": "Le Somail", "lat": 43.2758, "lng": 2.8916, "stars": 5, "role": "Family highlight", "url": "https://www.openstreetmap.org/?mlat=43.2758&mlon=2.8916#map=15/43.2758/2.8916", "dir": "https://www.openstreetmap.org/?mlat=43.2758&mlon=2.8916#map=15/43.2758/2.8916", "city": "Canal"}, {"id": "canal-carcassonne-cit", "name": "Carcassonne (Cit\u00e9)", "lat": 43.2061, "lng": 2.3644, "stars": 5, "role": "Taxi day \u2014 the wow", "url": "https://www.openstreetmap.org/?mlat=43.2061&mlon=2.3644#map=15/43.2061/2.3644", "dir": "https://www.openstreetmap.org/?mlat=43.2061&mlon=2.3644#map=15/43.2061/2.3644", "city": "Canal"}, {"id": "canal-minerve", "name": "Minerve", "lat": 43.3546, "lng": 2.7472, "stars": 4, "role": "Taxi half-day", "url": "https://www.openstreetmap.org/?mlat=43.3546&mlon=2.7472#map=15/43.3546/2.7472", "dir": "https://www.openstreetmap.org/?mlat=43.3546&mlon=2.7472#map=15/43.3546/2.7472", "city": "Canal"}], "journey": [{"name": "Paris", "lat": 48.8566, "lng": 2.3522, "leg": "Base 1 &amp; 5"}, {"name": "Disneyland Paris", "lat": 48.8722, "lng": 2.7758, "leg": "18\u201319 Jul"}, {"name": "Homps \u00b7 Canal du Midi", "lat": 43.2712, "lng": 2.7176, "leg": "20\u201324 Jul"}, {"name": "Barcelona", "lat": 41.3792, "lng": 2.1401, "leg": "24\u201328 Jul"}], "geo": {"paris": {"river": [[48.838, 2.279], [48.842, 2.2775], [48.85, 2.2795], [48.856, 2.2845], [48.86, 2.2905], [48.8625, 2.2985], [48.864, 2.308], [48.8635, 2.316], [48.8615, 2.3255], [48.8595, 2.334], [48.8565, 2.34], [48.8548, 2.347], [48.852, 2.356], [48.847, 2.366], [48.842, 2.376], [48.838, 2.384]], "label": {"text": "Seine", "at": [48.8405, 2.379]}}, "barcelona": {"coast": [[41.347, 2.125], [41.356, 2.15], [41.366, 2.172], [41.376, 2.188], [41.387, 2.198], [41.397, 2.206], [41.408, 2.218], [41.418, 2.228]], "label": {"text": "Mediterranean", "at": [41.369, 2.212]}}, "canal": {"label": {"text": "Canal du Midi", "at": [43.269, 2.842]}}}};
+const MAP_DATA = {"paris": [{"id": "paris-eiffel-tower", "name": "Eiffel Tower", "lat": 48.8584, "lng": 2.2945, "rank": 1, "must": true, "alex": false, "overall": 5, "url": "https://ticket.toureiffel.paris/en", "dir": "https://www.openstreetmap.org/?mlat=48.8584&mlon=2.2945#map=16/48.8584/2.2945", "city": "Paris"}, {"id": "paris-louvre-museum", "name": "Louvre Museum", "lat": 48.8606, "lng": 2.3376, "rank": 8, "must": true, "alex": false, "overall": 5, "url": "https://ticket.louvre.fr/en", "dir": "https://www.openstreetmap.org/?mlat=48.8606&mlon=2.3376#map=16/48.8606/2.3376", "city": "Paris"}, {"id": "paris-mus-e-d-orsay", "name": "Mus\u00e9e d'Orsay", "lat": 48.86, "lng": 2.3266, "rank": 9, "must": true, "alex": false, "overall": 5, "url": "https://billetterie.musee-orsay.fr/billets-d-entree-au-musee-d-orsay-expo-css5-museeorsay-lgen-pg1-rg28911.html", "dir": "https://www.openstreetmap.org/?mlat=48.86&mlon=2.3266#map=16/48.86/2.3266", "city": "Paris"}, {"id": "paris-sainte-chapelle", "name": "Sainte-Chapelle", "lat": 48.8554, "lng": 2.345, "rank": 12, "must": true, "alex": false, "overall": 4, "url": "https://tickets.monuments-nationaux.fr/en-GB/families?site=2035141861660400306", "dir": "https://www.openstreetmap.org/?mlat=48.8554&mlon=2.345#map=16/48.8554/2.345", "city": "Paris"}, {"id": "paris-notre-dame-de-paris", "name": "Notre-Dame de Paris", "lat": 48.853, "lng": 2.3499, "rank": 10, "must": true, "alex": false, "overall": 5, "url": "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", "dir": "https://www.openstreetmap.org/?mlat=48.853&mlon=2.3499#map=16/48.853/2.3499", "city": "Paris"}, {"id": "paris-seine-river-cruise", "name": "Seine River Cruise", "lat": 48.8565, "lng": 2.341, "rank": 2, "must": true, "alex": true, "overall": 5, "url": "https://www.vedettesdupontneuf.com/cruises/", "dir": "https://www.openstreetmap.org/?mlat=48.8565&mlon=2.341#map=16/48.8565/2.341", "city": "Paris"}, {"id": "paris-les-invalides-mus-e-de-l-arm-e", "name": "Les Invalides / Mus\u00e9e de l'Arm\u00e9e", "lat": 48.8566, "lng": 2.3125, "rank": 3, "must": true, "alex": false, "overall": 5, "url": "https://billetterie.musee-armee.fr/en-GB/products", "dir": "https://www.openstreetmap.org/?mlat=48.8566&mlon=2.3125#map=16/48.8566/2.3125", "city": "Paris"}, {"id": "paris-montmartre-sacr-c-ur", "name": "Montmartre & Sacr\u00e9-C\u0153ur", "lat": 48.8867, "lng": 2.3431, "rank": 13, "must": true, "alex": false, "overall": 4, "url": "https://www.sacre-coeur-montmartre.com/english/", "dir": "https://www.openstreetmap.org/?mlat=48.8867&mlon=2.3431#map=16/48.8867/2.3431", "city": "Paris"}, {"id": "paris-arc-de-triomphe", "name": "Arc de Triomphe", "lat": 48.8738, "lng": 2.295, "rank": 0, "must": false, "alex": false, "overall": 4, "url": "https://tickets.monuments-nationaux.fr/en-GB/families?site=2035141861660400317", "dir": "https://www.openstreetmap.org/?mlat=48.8738&mlon=2.295#map=16/48.8738/2.295", "city": "Paris"}, {"id": "paris-galeries-lafayette-rooftop", "name": "Galeries Lafayette Rooftop", "lat": 48.8738, "lng": 2.332, "rank": 11, "must": true, "alex": false, "overall": 5, "url": "https://haussmann.galerieslafayette.com/en/terrace/", "dir": "https://www.openstreetmap.org/?mlat=48.8738&mlon=2.332#map=16/48.8738/2.332", "city": "Paris"}, {"id": "paris-panth-on", "name": "Panth\u00e9on", "lat": 48.8462, "lng": 2.3464, "rank": 0, "must": false, "alex": false, "overall": 4, "url": "https://tickets.monuments-nationaux.fr/en-GB/families?site=2035141861660400318", "dir": "https://www.openstreetmap.org/?mlat=48.8462&mlon=2.3464#map=16/48.8462/2.3464", "city": "Paris"}, {"id": "paris-jardin-d-acclimatation", "name": "Jardin d'Acclimatation", "lat": 48.8783, "lng": 2.2637, "rank": 0, "must": false, "alex": true, "overall": 4, "url": "https://www.jardindacclimatation.fr/", "dir": "https://www.openstreetmap.org/?mlat=48.8783&mlon=2.2637#map=16/48.8783/2.2637", "city": "Paris"}, {"id": "paris-jardin-du-luxembourg", "name": "Jardin du Luxembourg", "lat": 48.8462, "lng": 2.3372, "rank": 4, "must": true, "alex": true, "overall": 5, "url": "https://jardin.senat.fr/", "dir": "https://www.openstreetmap.org/?mlat=48.8462&mlon=2.3372#map=16/48.8462/2.3372", "city": "Paris"}, {"id": "paris-jardin-des-tuileries", "name": "Jardin des Tuileries", "lat": 48.8635, "lng": 2.3275, "rank": 5, "must": true, "alex": true, "overall": 5, "url": "https://www.paris.fr/lieux/jardin-des-tuileries-1795", "dir": "https://www.openstreetmap.org/?mlat=48.8635&mlon=2.3275#map=16/48.8635/2.3275", "city": "Paris"}, {"id": "paris-champ-de-mars", "name": "Champ de Mars", "lat": 48.8556, "lng": 2.2986, "rank": 6, "must": true, "alex": true, "overall": 5, "url": "https://www.paris.fr/lieux/parc-du-champ-de-mars-1807", "dir": "https://www.openstreetmap.org/?mlat=48.8556&mlon=2.2986#map=16/48.8556/2.2986", "city": "Paris"}, {"id": "paris-place-des-vosges", "name": "Place des Vosges", "lat": 48.8554, "lng": 2.3655, "rank": 7, "must": true, "alex": true, "overall": 5, "url": "https://www.paris.fr/lieux/place-des-vosges-1812", "dir": "https://www.openstreetmap.org/?mlat=48.8554&mlon=2.3655#map=16/48.8554/2.3655", "city": "Paris"}], "barcelona": [{"id": "barcelona-sagrada-fam-lia", "name": "Sagrada Fam\u00edlia", "lat": 41.4036, "lng": 2.1744, "rank": 1, "must": true, "alex": false, "overall": 5, "url": "https://sagradafamilia.org/en/tickets", "dir": "https://www.openstreetmap.org/?mlat=41.4036&mlon=2.1744#map=16/41.4036/2.1744", "city": "Barcelona"}, {"id": "barcelona-park-g-ell", "name": "Park G\u00fcell", "lat": 41.4145, "lng": 2.1527, "rank": 11, "must": true, "alex": true, "overall": 5, "url": "https://parkguell.barcelona/en/buy-tickets", "dir": "https://www.openstreetmap.org/?mlat=41.4145&mlon=2.1527#map=16/41.4145/2.1527", "city": "Barcelona"}, {"id": "barcelona-casa-batll", "name": "Casa Batll\u00f3", "lat": 41.3917, "lng": 2.165, "rank": 2, "must": true, "alex": false, "overall": 5, "url": "https://www.casabatllo.es/en/online-tickets/", "dir": "https://www.openstreetmap.org/?mlat=41.3917&mlon=2.165#map=16/41.3917/2.165", "city": "Barcelona"}, {"id": "barcelona-la-pedrera-casa-mil", "name": "La Pedrera / Casa Mil\u00e0", "lat": 41.3954, "lng": 2.162, "rank": 0, "must": false, "alex": false, "overall": 4, "url": "https://www.lapedrera.com/en/tickets/", "dir": "https://www.openstreetmap.org/?mlat=41.3954&mlon=2.162#map=16/41.3954/2.162", "city": "Barcelona"}, {"id": "barcelona-l-aqu-rium-de-barcelona", "name": "L'Aqu\u00e0rium de Barcelona", "lat": 41.3765, "lng": 2.1836, "rank": 3, "must": true, "alex": true, "overall": 5, "url": "https://www.aquariumbcn.com/en/visit/prices/", "dir": "https://www.openstreetmap.org/?mlat=41.3765&mlon=2.1836#map=16/41.3765/2.1836", "city": "Barcelona"}, {"id": "barcelona-cosmocaixa", "name": "CosmoCaixa", "lat": 41.4118, "lng": 2.1339, "rank": 4, "must": true, "alex": true, "overall": 5, "url": "https://cosmocaixa.org/es/", "dir": "https://www.openstreetmap.org/?mlat=41.4118&mlon=2.1339#map=16/41.4118/2.1339", "city": "Barcelona"}, {"id": "barcelona-parc-de-la-ciutadella", "name": "Parc de la Ciutadella", "lat": 41.3888, "lng": 2.187, "rank": 5, "must": true, "alex": true, "overall": 5, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/parks-and-gardens/parc-de-la-ciutadella_92086011952.html", "dir": "https://www.openstreetmap.org/?mlat=41.3888&mlon=2.187#map=16/41.3888/2.187", "city": "Barcelona"}, {"id": "barcelona-nova-ic-ria-beach", "name": "Nova Ic\u00e0ria Beach", "lat": 41.3915, "lng": 2.2005, "rank": 6, "must": true, "alex": true, "overall": 5, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/nova-icaria-beach_92086011905.html", "dir": "https://www.openstreetmap.org/?mlat=41.3915&mlon=2.2005#map=16/41.3915/2.2005", "city": "Barcelona"}, {"id": "barcelona-barcelona-cathedral", "name": "Barcelona Cathedral", "lat": 41.3839, "lng": 2.1762, "rank": 7, "must": true, "alex": false, "overall": 5, "url": "https://catedralbcn.org/", "dir": "https://www.openstreetmap.org/?mlat=41.3839&mlon=2.1762#map=16/41.3839/2.1762", "city": "Barcelona"}, {"id": "barcelona-hospital-de-sant-pau", "name": "Hospital de Sant Pau", "lat": 41.4136, "lng": 2.1744, "rank": 8, "must": true, "alex": false, "overall": 5, "url": "https://santpaubarcelona.org/en/", "dir": "https://www.openstreetmap.org/?mlat=41.4136&mlon=2.1744#map=16/41.4136/2.1744", "city": "Barcelona"}, {"id": "barcelona-passeig-de-gr-cia", "name": "Passeig de Gr\u00e0cia", "lat": 41.393, "lng": 2.1637, "rank": 10, "must": true, "alex": false, "overall": 5, "url": "https://www.barcelonaturisme.com/wv3/en/page/1241/passeig-de-gracia.html", "dir": "https://www.openstreetmap.org/?mlat=41.393&mlon=2.1637#map=16/41.393/2.1637", "city": "Barcelona"}, {"id": "barcelona-port-vell", "name": "Port Vell", "lat": 41.3758, "lng": 2.183, "rank": 9, "must": true, "alex": false, "overall": 5, "url": "https://www.barcelonaturisme.com/wv3/en/page/64/port-vell.html", "dir": "https://www.openstreetmap.org/?mlat=41.3758&mlon=2.183#map=16/41.3758/2.183", "city": "Barcelona"}, {"id": "barcelona-montju-c-cable-car", "name": "Montju\u00efc Cable Car", "lat": 41.3641, "lng": 2.1641, "rank": 0, "must": false, "alex": false, "overall": 3, "url": "https://www.telefericdemontjuic.cat/en/tickets", "dir": "https://www.openstreetmap.org/?mlat=41.3641&mlon=2.1641#map=16/41.3641/2.1641", "city": "Barcelona"}, {"id": "barcelona-magic-fountain-of-montju-c", "name": "Magic Fountain of Montju\u00efc", "lat": 41.3711, "lng": 2.1517, "rank": 0, "must": false, "alex": true, "overall": 4, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/magic-fountain", "dir": "https://www.openstreetmap.org/?mlat=41.3711&mlon=2.1517#map=16/41.3711/2.1517", "city": "Barcelona"}, {"id": "barcelona-bunkers-del-carmel", "name": "Bunkers del Carmel", "lat": 41.4194, "lng": 2.162, "rank": 0, "must": false, "alex": false, "overall": 3, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/parks-and-gardens/turo-de-la-rovira_99400393480.html", "dir": "https://www.openstreetmap.org/?mlat=41.4194&mlon=2.162#map=16/41.4194/2.162", "city": "Barcelona"}], "canal": [{"id": "canal-homps-base", "name": "Homps (base)", "lat": 43.2712, "lng": 2.7176, "stars": 3, "role": "Home port", "url": "https://www.openstreetmap.org/?mlat=43.2712&mlon=2.7176#map=15/43.2712/2.7176", "dir": "https://www.openstreetmap.org/?mlat=43.2712&mlon=2.7176#map=15/43.2712/2.7176", "city": "Canal"}, {"id": "canal-lac-de-jouarres", "name": "Lac de Jouarres", "lat": 43.268, "lng": 2.73, "stars": 5, "role": "Alexander heat-block", "url": "https://www.openstreetmap.org/?mlat=43.268&mlon=2.73#map=15/43.268/2.73", "dir": "https://www.openstreetmap.org/?mlat=43.268&mlon=2.73#map=15/43.268/2.73", "city": "Canal"}, {"id": "canal-olonzac", "name": "Olonzac", "lat": 43.279, "lng": 2.736, "stars": 3, "role": "Market town", "url": "https://www.openstreetmap.org/?mlat=43.279&mlon=2.736#map=15/43.279/2.736", "dir": "https://www.openstreetmap.org/?mlat=43.279&mlon=2.736#map=15/43.279/2.736", "city": "Canal"}, {"id": "canal-argens-minervois", "name": "Argens-Minervois", "lat": 43.2637, "lng": 2.7566, "stars": 3, "role": "Quick wander ~1 hr", "url": "https://www.openstreetmap.org/?mlat=43.2637&mlon=2.7566#map=15/43.2637/2.7566", "dir": "https://www.openstreetmap.org/?mlat=43.2637&mlon=2.7566#map=15/43.2637/2.7566", "city": "Canal"}, {"id": "canal-roubia", "name": "Roubia", "lat": 43.2664, "lng": 2.7876, "stars": 3, "role": "Food stop", "url": "https://www.openstreetmap.org/?mlat=43.2664&mlon=2.7876#map=15/43.2664/2.7876", "dir": "https://www.openstreetmap.org/?mlat=43.2664&mlon=2.7876#map=15/43.2664/2.7876", "city": "Canal"}, {"id": "canal-paraza", "name": "Paraza", "lat": 43.2559, "lng": 2.8028, "stars": 4, "role": "Lunch stop 1\u20132 hrs", "url": "https://www.openstreetmap.org/?mlat=43.2559&mlon=2.8028#map=15/43.2559/2.8028", "dir": "https://www.openstreetmap.org/?mlat=43.2559&mlon=2.8028#map=15/43.2559/2.8028", "city": "Canal"}, {"id": "canal-ventenac-en-minervois", "name": "Ventenac-en-Minervois", "lat": 43.2606, "lng": 2.8206, "stars": 3, "role": "Quayside pause", "url": "https://www.openstreetmap.org/?mlat=43.2606&mlon=2.8206#map=15/43.2606/2.8206", "dir": "https://www.openstreetmap.org/?mlat=43.2606&mlon=2.8206#map=15/43.2606/2.8206", "city": "Canal"}, {"id": "canal-le-somail", "name": "Le Somail", "lat": 43.2758, "lng": 2.8916, "stars": 5, "role": "Family highlight", "url": "https://www.openstreetmap.org/?mlat=43.2758&mlon=2.8916#map=15/43.2758/2.8916", "dir": "https://www.openstreetmap.org/?mlat=43.2758&mlon=2.8916#map=15/43.2758/2.8916", "city": "Canal"}, {"id": "canal-carcassonne-cit", "name": "Carcassonne (Cit\u00e9)", "lat": 43.2061, "lng": 2.3644, "stars": 5, "role": "Taxi day \u2014 the wow", "url": "https://www.openstreetmap.org/?mlat=43.2061&mlon=2.3644#map=15/43.2061/2.3644", "dir": "https://www.openstreetmap.org/?mlat=43.2061&mlon=2.3644#map=15/43.2061/2.3644", "city": "Canal"}, {"id": "canal-minerve", "name": "Minerve", "lat": 43.3546, "lng": 2.7472, "stars": 4, "role": "Taxi half-day", "url": "https://www.openstreetmap.org/?mlat=43.3546&mlon=2.7472#map=15/43.3546/2.7472", "dir": "https://www.openstreetmap.org/?mlat=43.3546&mlon=2.7472#map=15/43.3546/2.7472", "city": "Canal"}], "stays": {"paris": [{"id": "stay-paris-0", "name": "Charles V (Le Marais)", "lat": 48.8543, "lng": 2.3607, "note": "Final Paris base, 28\u201331 Jul", "dir": "https://www.openstreetmap.org/?mlat=48.8543&mlon=2.3607#map=16/48.8543/2.3607", "city": "Paris", "stay": true}, {"id": "stay-paris-1", "name": "Normandy Le Chantier (1st)", "lat": 48.8636, "lng": 2.3335, "note": "One night, 19 Jul", "dir": "https://www.openstreetmap.org/?mlat=48.8636&mlon=2.3335#map=16/48.8636/2.3335", "city": "Paris", "stay": true}], "barcelona": [{"id": "stay-barcelona-0", "name": "Meli\u00e1 Barcelona Sky (Poblenou)", "lat": 41.4045, "lng": 2.1935, "note": "Barcelona base, 24\u201328 Jul", "dir": "https://www.openstreetmap.org/?mlat=41.4045&mlon=2.1935#map=16/41.4045/2.1935", "city": "Barcelona", "stay": true}]}, "journey": [{"name": "Paris", "lat": 48.8566, "lng": 2.3522, "leg": "Base 1 &amp; 5"}, {"name": "Disneyland Paris", "lat": 48.8722, "lng": 2.7758, "leg": "18\u201319 Jul"}, {"name": "Homps \u00b7 Canal du Midi", "lat": 43.2712, "lng": 2.7176, "leg": "20\u201324 Jul"}, {"name": "Barcelona", "lat": 41.3792, "lng": 2.1401, "leg": "24\u201328 Jul"}], "geo": {"paris": {"river": [[48.838, 2.279], [48.842, 2.2775], [48.85, 2.2795], [48.856, 2.2845], [48.86, 2.2905], [48.8625, 2.2985], [48.864, 2.308], [48.8635, 2.316], [48.8615, 2.3255], [48.8595, 2.334], [48.8565, 2.34], [48.8548, 2.347], [48.852, 2.356], [48.847, 2.366], [48.842, 2.376], [48.838, 2.384]], "label": {"text": "Seine", "at": [48.8405, 2.379]}}, "barcelona": {"coast": [[41.347, 2.125], [41.356, 2.15], [41.366, 2.172], [41.376, 2.188], [41.387, 2.198], [41.397, 2.206], [41.408, 2.218], [41.418, 2.228]], "label": {"text": "Mediterranean", "at": [41.369, 2.212]}}, "canal": {"label": {"text": "Canal du Midi", "at": [43.269, 2.842]}}}};
 
 /* ---------- planner state (persists on this device; falls back to memory) ---------- */
-const KP='fs26_plan', KD='fs26_done';
+const KP='fs26_plan_v2', KD='fs26_done';
 function loadSet(k){try{return new Set(JSON.parse(localStorage.getItem(k)||'[]'))}catch(e){return new Set()}}
 function saveSet(k,s){try{localStorage.setItem(k,JSON.stringify([...s]))}catch(e){}}
-const PLAN=loadSet(KP), DONE=loadSet(KD);
+function loadObj(k){try{return JSON.parse(localStorage.getItem(k)||'{}')||{}}catch(e){return {}}}
+function saveObj(k,o){try{localStorage.setItem(k,JSON.stringify(o))}catch(e){}}
+const PLAN=loadObj(KP), DONE=loadSet(KD);
 
 /* id -> meta, for the plan panel + counts */
 const META={};
 ['paris','barcelona','canal'].forEach(c=>MAP_DATA[c].forEach(m=>{META[m.id]=m;}));
+['paris','barcelona'].forEach(c=>((MAP_DATA.stays&&MAP_DATA.stays[c])||[]).forEach(m=>{META[m.id]=m;}));
 
 /* ---------- Web-Mercator projection + static tile map (real basemap when online) ---------- */
 function bbox(items){
@@ -2243,6 +2213,8 @@ function bbox(items){
 }
 function mercX(lng,z){return (lng+180)/360*Math.pow(2,z);}
 function mercY(lat,z){const r=lat*Math.PI/180;return (1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*Math.pow(2,z);}
+function x2lng(x,z){return x/Math.pow(2,z)*360-180;}
+function y2lat(y,z){const n=Math.PI-2*Math.PI*y/Math.pow(2,z);return 180/Math.PI*Math.atan(0.5*(Math.exp(n)-Math.exp(-n)));}
 function fitZoom(box,W,H){
   for(let z=17;z>=2;z--){
     const pw=(mercX(box.maxLn,z)-mercX(box.minLn,z))*256;
@@ -2251,12 +2223,13 @@ function fitZoom(box,W,H){
   } return 2;
 }
 function declutter(P,W,H,minSep){
-  for(let it=0;it<60;it++)for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){
+  for(let it=0;it<50;it++)for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){
     let dx=P[j].px-P[i].px,dy=P[j].py-P[i].py,d=Math.hypot(dx,dy)||0.01;
     if(d<minSep){const p=(minSep-d)/2,ux=dx/d,uy=dy/d;P[i].px-=ux*p;P[i].py-=uy*p;P[j].px+=ux*p;P[j].py+=uy*p;}
   }
-  const pad=17;
-  P.forEach(p=>{p.px=Math.max(pad,Math.min(W-pad,p.px));p.py=Math.max(pad,Math.min(H-pad,p.py));p.lx=p.px/W*100;p.ly=p.py/H*100;});
+  P.forEach(p=>{ if(p.px>=0&&p.px<=W){p.px=Math.max(15,Math.min(W-15,p.px));}
+                if(p.py>=0&&p.py<=H){p.py=Math.max(15,Math.min(H-15,p.py));}
+                p.lx=p.px/W*100; p.ly=p.py/H*100;});
   return P;
 }
 function pinClass(m,kind){
@@ -2283,22 +2256,29 @@ function buildMap(id,kind){
   const key=kind==='journey'?'journey':(id==='map-paris'?'paris':id==='map-barcelona'?'barcelona':'canal');
   let items=MAP_DATA[key];
   if(kind==='journey') items=items.map((m,i)=>({...m,_i:i}));
+  // city maps: keep only must-see + Alexander pins (drop "other listed")
+  if(kind==='city') items=items.filter(m=>m.must||m.alex);
+  const stays=(kind==='city' && MAP_DATA.stays && MAP_DATA.stays[key])||[];
+  const allPins=items.concat(stays.map(s=>({...s})));
   const geo=(MAP_DATA.geo&&MAP_DATA.geo[key])||{};
   const gflat=[];
   (geo.river||[]).forEach(c=>gflat.push({lat:c[0],lng:c[1]}));
   (geo.coast||[]).forEach(c=>gflat.push({lat:c[0],lng:c[1]}));
-  const box=bbox(items.concat(gflat));
+  const box=bbox(MAP_DATA[key].concat(gflat, stays));
+  const W0=el.clientWidth||320, H0=el.clientHeight||300;
+  const st={z:fitZoom(box,W0,H0), cLat:(box.minLa+box.maxLa)/2, cLng:(box.minLn+box.maxLn)/2};
+  st.minZ=Math.max(2, st.z-1);
+  el._state=st;
   const pop=document.createElement('div'); pop.className='mappop';
+  const ctrl=document.createElement('div'); ctrl.className='mapctl';
+  ctrl.innerHTML='<button class="zbtn" data-z="in" aria-label="Zoom in">+</button><button class="zbtn" data-z="out" aria-label="Zoom out">−</button>';
 
   function render(){
-    const W=el.clientWidth||320, H=el.clientHeight||300;
-    const z=fitZoom(box,W,H);
-    const midLng=(box.minLn+box.maxLn)/2, midLat=(box.minLa+box.maxLa)/2;
-    const originX=mercX(midLng,z)*256-W/2, originY=mercY(midLat,z)*256-H/2;
+    const W=el.clientWidth||320, H=el.clientHeight||300, z=st.z;
+    const originX=mercX(st.cLng,z)*256-W/2, originY=mercY(st.cLat,z)*256-H/2;
     const toPx=(lat,lng)=>[mercX(lng,z)*256-originX, mercY(lat,z)*256-originY];
     const toPct=(lat,lng)=>{const p=toPx(lat,lng);return [p[0]/W*100,p[1]/H*100];};
 
-    /* fallback schematic (behind tiles) */
     let bg='';
     if(geo.coast){
       const cp=geo.coast.map(c=>toPct(c[0],c[1])), last=cp[cp.length-1], first=cp[0];
@@ -2313,7 +2293,6 @@ function buildMap(id,kind){
     if(geo.label){const lp=toPct(geo.label.at[0],geo.label.at[1]);
       bglbl=`<span class="maplbl" style="left:${lp[0].toFixed(1)}%;top:${lp[1].toFixed(1)}%">${geo.label.text}</span>`;}
 
-    /* real tiles */
     const nmax=Math.pow(2,z);
     const tx0=Math.floor(originX/256), tx1=Math.floor((originX+W)/256);
     const ty0=Math.floor(originY/256), ty1=Math.floor((originY+H)/256);
@@ -2327,10 +2306,8 @@ function buildMap(id,kind){
            +`style="left:${left}px;top:${top}px" width="256" height="256" onerror="tileFallback(this)">`;
     }
 
-    /* pins (decluttered) */
-    const P=declutter(items.map(m=>{const p=toPx(m.lat,m.lng);return {...m,px:p[0],py:p[1]};}),W,H,26);
+    const P=declutter(allPins.map(m=>{const p=toPx(m.lat,m.lng);return {...m,px:p[0],py:p[1]};}),W,H,26);
 
-    /* route / canal annotation over tiles */
     let anno='';
     if(kind==='journey'){
       const seq=P.concat([P[0]]);
@@ -2344,20 +2321,77 @@ function buildMap(id,kind){
     html+=tiles;
     html+=`<svg class="anno" viewBox="0 0 100 100" preserveAspectRatio="none">${anno}</svg>`;
     P.forEach(m=>{
-      const cls=pinClass(m,kind), planned=(m.id&&PLAN.has(m.id))?' planned':'';
-      html+=`<button class="pin ${cls}${planned}" style="left:${m.lx.toFixed(2)}%;top:${m.ly.toFixed(2)}%" `
-          +`data-id="${m.id||''}" data-name="${m.name.replace(/"/g,'&quot;')}">`
-          +`<span class="dotmark">${pinLabelInner(m,kind)}</span>`
+      let cls, label;
+      if(m.stay){ cls='stay'; label='▲'; }
+      else if(kind==='journey'){ cls='node'; label=(m._i!=null?m._i+1:''); }
+      else if(kind==='canal'){ cls='canal'; label=m.stars; }
+      else { cls=(m.alex?'pink':'top'); label=(m.rank>0?m.rank:''); }
+      const slot=(m.id&&PLAN[m.id]); const pcls=slot?` planned slot-${slot}`:'';
+      html+=`<button class="pin ${cls}${pcls}" style="left:${m.lx.toFixed(2)}%;top:${m.ly.toFixed(2)}%" `
+          +`data-id="${m.id||''}" data-name="${(m.name||'').replace(/"/g,'&quot;')}">`
+          +`<span class="dotmark">${label}</span>`
           +`<span class="plabel">${m.name}</span></button>`;
     });
     html+=`<span class="attrib">&copy; OpenStreetMap contributors</span>`;
-    el.innerHTML=html; el.appendChild(pop);
+    el.innerHTML=html; el.appendChild(pop); el.appendChild(ctrl);
     el.querySelectorAll('.pin').forEach(b=>b.addEventListener('click',ev=>{
       ev.stopPropagation(); openPop(el,pop,b,kind);
     }));
   }
   render();
   el._render=render;
+
+  /* ---- pan + zoom ---- */
+  function setZoom(nz,fx,fy){
+    const W=el.clientWidth,H=el.clientHeight,z0=st.z;
+    nz=Math.max(st.minZ,Math.min(19,nz)); if(nz===z0) return;
+    fx=(fx==null)?W/2:fx; fy=(fy==null)?H/2:fy;
+    const oX=mercX(st.cLng,z0)*256-W/2, oY=mercY(st.cLat,z0)*256-H/2;
+    const gLng=x2lng((oX+fx)/256,z0), gLat=y2lat((oY+fy)/256,z0);
+    st.z=nz;
+    const nX=mercX(gLng,nz)*256-fx, nY=mercY(gLat,nz)*256-fy;
+    st.cLng=x2lng((nX+W/2)/256,nz); st.cLat=y2lat((nY+H/2)/256,nz);
+    render();
+  }
+  function panBy(dx,dy){
+    const W=el.clientWidth,H=el.clientHeight,z=st.z;
+    const oX=mercX(st.cLng,z)*256-W/2-dx, oY=mercY(st.cLat,z)*256-H/2-dy;
+    st.cLng=x2lng((oX+W/2)/256,z); st.cLat=y2lat((oY+H/2)/256,z);
+    render();
+  }
+  ctrl.querySelectorAll('.zbtn').forEach(b=>b.addEventListener('click',ev=>{
+    ev.stopPropagation(); setZoom(st.z+(b.dataset.z==='in'?1:-1));
+  }));
+  el.addEventListener('wheel',ev=>{ev.preventDefault();setZoom(st.z+(ev.deltaY<0?1:-1),ev.offsetX,ev.offsetY);},{passive:false});
+  // mouse drag
+  let md=false,lx,ly;
+  el.addEventListener('pointerdown',ev=>{if(ev.pointerType==='mouse'){md=true;lx=ev.clientX;ly=ev.clientY;}});
+  window.addEventListener('pointermove',ev=>{if(md){panBy(ev.clientX-lx,ev.clientY-ly);lx=ev.clientX;ly=ev.clientY;}});
+  window.addEventListener('pointerup',()=>{md=false;});
+  // two-finger pan + pinch
+  function two(ev){const a=ev.touches[0],b=ev.touches[1],r=el.getBoundingClientRect();
+    const ax=a.clientX-r.left,ay=a.clientY-r.top,bx=b.clientX-r.left,by=b.clientY-r.top;
+    return {cx:(ax+bx)/2,cy:(ay+by)/2,d:Math.hypot(bx-ax,by-ay)};}
+  let pinch=null;
+  el.addEventListener('touchstart',ev=>{if(ev.touches.length===2){pinch=two(ev);pinch.d0=pinch.d;ev.preventDefault();}else pinch=null;},{passive:false});
+  el.addEventListener('touchmove',ev=>{if(ev.touches.length===2&&pinch){ev.preventDefault();const n=two(ev);
+    panBy(n.cx-pinch.cx,n.cy-pinch.cy);
+    const ratio=n.d/pinch.d0;
+    if(ratio>1.6){setZoom(st.z+1,n.cx,n.cy);pinch=two(ev);pinch.d0=pinch.d;}
+    else if(ratio<0.62){setZoom(st.z-1,n.cx,n.cy);pinch=two(ev);pinch.d0=pinch.d;}
+    else{pinch.cx=n.cx;pinch.cy=n.cy;}
+  }},{passive:false});
+  el.addEventListener('touchend',ev=>{if(ev.touches.length<2)pinch=null;});
+  // double-tap to zoom in
+  let lastTap=0;
+  el.addEventListener('touchend',ev=>{if(ev.touches.length===0&&ev.changedTouches.length===1){
+    if(ev.target.closest&&ev.target.closest('.pin,.zbtn,.mappop'))return;
+    const now=Date.now();
+    if(now-lastTap<300){const r=el.getBoundingClientRect();
+      setZoom(st.z+1,ev.changedTouches[0].clientX-r.left,ev.changedTouches[0].clientY-r.top);lastTap=0;}
+    else lastTap=now;
+  }});
+
   el.addEventListener('click',()=>{pop.classList.remove('show');el.querySelectorAll('.pin.active').forEach(p=>p.classList.remove('active'));});
 }
 
@@ -2367,72 +2401,89 @@ function openPop(el,pop,btn,kind){
   const id=btn.dataset.id, m=META[id]||{name:btn.dataset.name};
   let sub='', rows='';
   if(kind==='journey'){ sub=m.leg||''; }
+  else if(m.stay){ sub=m.note||'Your base';
+    rows=`<a class="tbtn small" href="${m.dir}" target="_blank" rel="noopener">Directions</a>`;
+  }
   else if(kind==='canal'){ sub=`${m.role||''} &middot; ${'\u2605'.repeat(m.stars||0)}`;
     rows=`<a class="tbtn small" href="${m.url}" target="_blank" rel="noopener">Open map</a>`;
   } else {
-    sub=`${m.rank>0?('#'+m.rank+' top pick &middot; '):''}score ${m.overall}/5`;
+    sub=`${m.rank>0?('#'+m.rank+(m.alex?' for Alexander':' top pick')+' &middot; '):(m.alex?'for Alexander &middot; ':'')}score ${m.overall}/5`;
     rows=`<a class="tbtn primary small" href="${m.url}" target="_blank" rel="noopener">Open site</a>`
         +`<a class="tbtn small" href="${m.dir}" target="_blank" rel="noopener">Directions</a>`;
   }
-  const planned=id&&PLAN.has(id);
-  const planBtn=id?`<button class="tbtn small ${planned?'primary':''}" data-planpop="${id}" style="width:100%">${planned?'\u2713 In your plan':'Add to plan'}</button>`:'';
+  const slot=id&&PLAN[id];
+  const planBtn=(id&&!m.stay&&kind!=='journey')?
+    `<div class="popslots"><span class="slotlbl">Plan for:</span>`
+    +`<button class="slotbtn morn ${slot==='morning'?'on':''}" data-pslot="morning" data-id="${id}">Morning</button>`
+    +`<button class="slotbtn heat ${slot==='heat'?'on':''}" data-pslot="heat" data-id="${id}">Heat</button>`
+    +`<button class="slotbtn eve ${slot==='evening'?'on':''}" data-pslot="evening" data-id="${id}">Evening</button></div>`:'';
   pop.innerHTML=`<h4>${m.name}</h4><div class="psub">${sub}</div>`
     +(rows?`<div class="prow">${rows}</div>`:'')+planBtn+`<span class="arrow"></span>`;
   const lx=Math.max(17,Math.min(83,parseFloat(btn.style.left)));
   pop.style.left=lx+'%'; pop.style.top=btn.style.top;
   pop.classList.add('show');
-  const pb=pop.querySelector('[data-planpop]');
-  if(pb) pb.addEventListener('click',ev=>{ev.stopPropagation();togglePlan(id);openPop(el,pop,btn,kind);});
+  pop.querySelectorAll('[data-pslot]').forEach(b=>b.addEventListener('click',ev=>{
+    ev.stopPropagation(); setSlot(b.dataset.id,b.dataset.pslot); openPop(el,pop,btn,kind);
+  }));
 }
 
-/* ---------- plan toggling + live sync ---------- */
-function togglePlan(id){
+/* ---------- plan (assign each activity to a time slot) ---------- */
+function setSlot(id,slot){
   if(!id) return;
-  if(PLAN.has(id)) PLAN.delete(id); else PLAN.add(id);
-  saveSet(KP,PLAN); syncId(id); refreshCounts(); refreshFab(); if(sheetOpen) renderSheet();
+  if(PLAN[id]===slot) delete PLAN[id]; else PLAN[id]=slot;
+  saveObj(KP,PLAN); syncId(id); refreshCounts(); refreshFab(); if(sheetOpen) renderSheet();
 }
 function syncId(id){
-  document.querySelectorAll(`.pin[data-id="${id}"]`).forEach(p=>p.classList.toggle('planned',PLAN.has(id)));
+  const slot=PLAN[id];
+  document.querySelectorAll(`.pin[data-id="${id}"]`).forEach(p=>{
+    p.classList.remove('planned','slot-morning','slot-heat','slot-evening');
+    if(slot) p.classList.add('planned','slot-'+slot);
+  });
   const card=document.querySelector(`.card[data-plan-id="${id}"]`);
-  if(card){ card.classList.toggle('planned',PLAN.has(id));
-    const b=card.querySelector('.planbtn'); if(b) b.setAttribute('aria-pressed',PLAN.has(id)?'true':'false'); }
+  if(card){
+    card.classList.remove('slot-morning','slot-heat','slot-evening');
+    if(slot) card.classList.add('slot-'+slot);
+    card.querySelectorAll('.slotbtn').forEach(b=>b.classList.toggle('on',b.dataset.slot===slot));
+  }
 }
-function cityCount(city){let n=0;PLAN.forEach(id=>{const m=META[id];if(m&&m.city===city)n++});return n;}
+function planSize(){return Object.keys(PLAN).length;}
+function cityCount(city){let n=0;for(const id in PLAN){const m=META[id];if(m&&m.city===city)n++;}return n;}
 function refreshCounts(){
   document.querySelectorAll('.selcount').forEach(s=>{
-    const c=s.dataset.city, n=cityCount(c);
+    const n=cityCount(s.dataset.city);
     s.textContent=n?`${n} in your plan`:'none selected yet';
   });
 }
 function refreshFab(){
   const fab=document.getElementById('planfab'); if(!fab) return;
-  fab.querySelector('.n').textContent=PLAN.size;
-  fab.classList.toggle('empty',PLAN.size===0);
+  fab.querySelector('.n').textContent=planSize();
+  fab.classList.toggle('empty',planSize()===0);
 }
 
-/* ---------- plan sheet ---------- */
+/* ---------- plan sheet (grouped by time of day) ---------- */
 let sheetOpen=false;
+const SLOTS=[['morning','Morning','morn'],['heat','Heat block \u00b7 14:00\u201318:00','heat'],['evening','Evening','eve']];
 function renderSheet(){
   const body=document.getElementById('sheetbody'); if(!body) return;
-  if(PLAN.size===0){ body.innerHTML='<p class="planempty">No activities selected yet. Tap <b>Add to plan</b> on any site, or a map pin, to build your plan.</p>'; return; }
-  const groups={'Paris':[], 'Canal':[], 'Barcelona':[]};
-  PLAN.forEach(id=>{const m=META[id]; if(m) (groups[m.city]||(groups[m.city]=[])).push(m);});
-  const label={'Paris':'Paris','Canal':'Canal du Midi','Barcelona':'Barcelona'};
+  if(planSize()===0){ body.innerHTML='<p class="planempty">Nothing planned yet. On any site or map pin, tap <b>Morning</b>, <b>Heat</b> or <b>Evening</b> to slot it into your day.</p>'; return; }
   let html='';
-  ['Paris','Canal','Barcelona'].forEach(c=>{
-    const g=groups[c]; if(!g||!g.length) return;
-    html+=`<div class="plangroup"><h4>${label[c]} &middot; ${g.length}</h4>`;
-    g.forEach(m=>{
-      html+=`<div class="planitem"><span class="pi-name"><a href="${m.url}" target="_blank" rel="noopener">${m.name}</a></span>`
-          +`<button class="pi-x" data-rm="${m.id}">Remove</button></div>`;
+  SLOTS.forEach(([k,label,cls])=>{
+    const ids=Object.keys(PLAN).filter(id=>PLAN[id]===k);
+    if(!ids.length) return;
+    html+=`<div class="plangroup ${cls}"><h4>${label} &middot; ${ids.length}</h4>`;
+    ids.forEach(id=>{const m=META[id]; if(!m) return; const link=m.url||m.dir||'#';
+      html+=`<div class="planitem"><span class="pi-name"><a href="${link}" target="_blank" rel="noopener">${m.name}</a> <span class="pi-city">${m.city}</span></span>`
+          +`<button class="pi-x" data-rm="${id}">Remove</button></div>`;
     });
     html+='</div>';
   });
   html+='<button class="planclear" id="planclear">Clear all</button>';
   body.innerHTML=html;
-  body.querySelectorAll('[data-rm]').forEach(b=>b.addEventListener('click',()=>togglePlan(b.dataset.rm)));
+  body.querySelectorAll('[data-rm]').forEach(b=>b.addEventListener('click',()=>{
+    const id=b.dataset.rm; delete PLAN[id]; saveObj(KP,PLAN); syncId(id); refreshCounts(); refreshFab(); renderSheet();
+  }));
   const cl=document.getElementById('planclear');
-  if(cl) cl.addEventListener('click',()=>{[...PLAN].forEach(id=>{PLAN.delete(id);syncId(id);});saveSet(KP,PLAN);refreshCounts();refreshFab();renderSheet();});
+  if(cl) cl.addEventListener('click',()=>{Object.keys(PLAN).forEach(id=>{delete PLAN[id];syncId(id);});saveObj(KP,PLAN);refreshCounts();refreshFab();renderSheet();});
 }
 function openSheet(){sheetOpen=true;renderSheet();document.getElementById('sheet').classList.add('show');}
 function closeSheet(){sheetOpen=false;document.getElementById('sheet').classList.remove('show');}
@@ -2444,13 +2495,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   buildMap('map-barcelona','city');
   buildMap('map-canal','canal');
 
-  // restore card + day states
-  document.querySelectorAll('.card[data-plan-id]').forEach(c=>{
-    const id=c.dataset.planId, on=PLAN.has(id);
-    c.classList.toggle('planned',on);
-    const b=c.querySelector('.planbtn'); if(b) b.setAttribute('aria-pressed',on?'true':'false');
-  });
-  document.querySelectorAll('.planbtn').forEach(b=>b.addEventListener('click',()=>togglePlan(b.dataset.id)));
+  // wire slot pickers + restore plan states (pins + cards)
+  document.querySelectorAll('.slotpick .slotbtn').forEach(b=>b.addEventListener('click',()=>{
+    const id=b.closest('.slotpick').dataset.id; setSlot(id,b.dataset.slot);
+  }));
+  document.querySelectorAll('.card[data-plan-id]').forEach(c=>syncId(c.dataset.planId));
   document.querySelectorAll('.daydone input').forEach(inp=>{
     const d=inp.dataset.day, on=DONE.has(d);
     inp.checked=on; inp.closest('.day').classList.toggle('done',on);
