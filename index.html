@@ -421,6 +421,9 @@ table.log b{color:var(--water2)}
   padding:1px 5px;border-radius:10px;margin-left:5px;vertical-align:1px}
 .dpitem.slot-morning .dpslot{background:var(--am)} .dpitem.slot-heat .dpslot{background:var(--heat)} .dpitem.slot-evening .dpslot{background:var(--pm)}
 .dpkm{font-family:var(--mono);font-size:9.5px;color:var(--muted);margin-left:6px;white-space:nowrap}
+a.dpkm{text-decoration:none;cursor:pointer}
+a.dpkm:hover{text-decoration:underline}
+a.dpkm.far{color:var(--am);font-weight:700}
 .dprm{border:0;background:transparent;color:var(--signal);font-size:19px;line-height:1;cursor:pointer;padding:0 2px;flex-shrink:0}
 .pgcity{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;margin-left:6px;font-weight:400;letter-spacing:.03em}
 .pi-name .pio{font-family:var(--disp);color:var(--water2);margin-right:2px}
@@ -2277,6 +2280,15 @@ function hop(km){
   const mins=Math.max(1,Math.round(km*14));
   return `${km.toFixed(1)} km \u00b7 ~${mins} min ${km>2.2?'(metro faster)':'walk'}`;
 }
+// tappable hop -> Google Maps directions between the two stops, transit for long hops else walking
+function hopLink(it){
+  if(it._km==null) return '';
+  const txt=hop(it._km);
+  if(it._km<0.12 || !it._from) return `<span class="dpkm">${txt}</span>`;
+  const mode=it._km>2.2?'transit':'walking';
+  const u=`https://www.google.com/maps/dir/?api=1&origin=${it._from[0]},${it._from[1]}&destination=${it.lat},${it.lng}&travelmode=${mode}`;
+  return `<a class="dpkm route ${it._km>2.2?'far':''}" href="${u}" target="_blank" rel="noopener">${txt} \u203a</a>`;
+}
 // order a day's picks: morning -> heat -> evening -> anytime, each nearest-first from the base
 function optimiseDay(dayNum){
   const items=Object.keys(PLAN).filter(id=>PLAN[id].d===dayNum && META[id])
@@ -2291,6 +2303,7 @@ function optimiseDay(dayNum){
       let bi=0,bd=Infinity;
       for(let i=0;i<pool.length;i++){const d=start?haversine(start,[pool[i].lat,pool[i].lng]):0; if(d<bd){bd=d;bi=i;}}
       const nx=pool.splice(bi,1)[0];
+      nx._from=start?[start[0],start[1]]:null;
       nx._km=start?haversine(start,[nx.lat,nx.lng]):null;
       ordered.push(nx); start=[nx.lat,nx.lng];
     }
@@ -2598,7 +2611,7 @@ function renderDayPlans(){
     ordered.forEach((it,i)=>{
       const sc=it.slot?('slot-'+it.slot):'slot-none';
       const sl=it.slot?`<span class="dpslot">${SLOT_SHORT[it.slot]}</span>`:'';
-      const km=(it._km!=null)?`<span class="dpkm">${hop(it._km)}</span>`:'';
+      const km=(it._km!=null)?hopLink(it):'';
       const link=it.url||it.dir||'#';
       html+=`<div class="dpitem ${sc}"><span class="dpn">${i+1}</span>`
           +`<span class="dpname"><a href="${link}" target="_blank" rel="noopener">${it.name}</a>${sl}${km}</span>`
@@ -2620,7 +2633,7 @@ function renderSheet(){
     const info=DAYINFO[dn]||{}; const ordered=optimiseDay(dn);
     html+=`<div class="plangroup"><h4>${info.label||('Jul '+dn)} <span class="pgcity">${info.city||''}</span></h4>`;
     ordered.forEach((it,i)=>{const sl=it.slot?({morning:'Morning',heat:'Heat 14\u201318',evening:'Evening'})[it.slot]:'Anytime';
-      const km=(i>0&&it._km!=null)?` \u00b7 ${hop(it._km)}`:'';
+      const km=(i>0&&it._km!=null)?` ${hopLink(it)}`:'';
       html+=`<div class="planitem"><span class="pi-name"><b class="pio">${i+1}</b> <a href="${it.url||it.dir||'#'}" target="_blank" rel="noopener">${it.name}</a> <span class="pi-city">${sl}${km}</span></span>`
           +`<button class="pi-x" data-rm="${it.id}">Remove</button></div>`;
     });
