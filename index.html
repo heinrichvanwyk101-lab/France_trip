@@ -443,6 +443,18 @@ a.dpkm.far{color:var(--am);font-weight:700}
 .eat{font-size:13.5px;color:var(--ink2);margin:0 0 10px;padding:2px 0 2px 11px;border-left:2.5px solid var(--water);line-height:1.5}
 .tip{font-size:12.5px;color:var(--muted);margin:0 0 10px;font-style:italic;line-height:1.45}
 
+/* booking tracker */
+.bookbox{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.bchk{display:flex;align-items:center;gap:6px;font-family:var(--disp);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.03em;color:var(--ink2);cursor:pointer}
+.bchk input{width:18px;height:18px;accent-color:#2e8b57;margin:0}
+.btat{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.btime{border:1.5px solid var(--line);border-radius:8px;padding:6px 9px;font-family:var(--mono);font-size:13px;color:var(--ink);background:#fff}
+.bookedbadge{display:none}
+.card.booked .bookedbadge{display:inline-block;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.06em;
+  background:#2e8b57;color:#fff;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.dpbt{font-family:var(--mono);font-size:9.5px;font-weight:700;color:#fff;background:#2e8b57;padding:1px 6px;border-radius:10px;margin-left:5px;vertical-align:1px}
+.pi-bt{font-family:var(--mono);font-size:9.5px;font-weight:700;color:#fff;background:#2e8b57;padding:1px 6px;border-radius:10px;margin-left:5px}
+
 @media print{
   *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
   .spine,.planfab,.sheet,.mapctl,.slotpick,.maptools,.daydone{display:none !important}
@@ -800,7 +812,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Homps</h3>
       <p class="sub">Base · start &amp; finish</p>
     </div>
-    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span><span class="off">○</span></span></div>
+    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span><span class="off">○</span></span><span class="bookedbadge"></span></div>
   </header>
   <div class="provbox"><span class="provk">Provisions</span>Stock up before you set off. Cross the footbridge by the base, then it&#x27;s a 7–10 min walk (Rue du Port / Rue de la Barque) to the supermarket. La Maison des Vins du Minervois wine merchant is right by the base — 100+ local wines, tastings, open to 6pm Mon–Fri.</div><ul class="todo"><li>Le Boat Mystique base and pre-departure briefing</li><li>Short walk around the village and marina</li><li>Lac de Jouarres swim lake, 1.4 km away</li></ul><p class="eat">Dinner: Les Tonneliers (garden setting; closed Tue/Wed) or En Bonne Compagnie.</p>
   <footer class="card-ft">
@@ -812,7 +824,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       </div>
     </div>
   </footer>
-  <div class="slotpick" data-id="canal-homps"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="canal-homps"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-argens-minervois">
@@ -821,7 +833,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Argens-Minervois</h3>
       <p class="sub">Day 1 · overnight</p>
     </div>
-    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span><span class="off">○</span></span></div>
+    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span><span class="off">○</span></span><span class="bookedbadge"></span></div>
   </header>
   <div class="cruise"><span class="ck">Cruise</span><span>6.5 km · 5 locks · ~2 hrs from Homps</span></div><ul class="todo"><li>Walk around Port d&#x27;Argens-Minervois</li><li>Explore the quiet medieval village</li><li>See the remains of the old château</li><li>Walk beside the canal and marina</li></ul><p class="eat">Dinner: La Guinguette — outdoor BBQ, large portions, good family atmosphere. Booking recommended: +33 4 68 41 51 96.</p>
   <footer class="card-ft">
@@ -833,7 +845,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       </div>
     </div>
   </footer>
-  <div class="slotpick" data-id="canal-argens-minervois"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="canal-argens-minervois"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-paraza">
@@ -842,7 +854,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Paraza</h3>
       <p class="sub">Day 2 · wine &amp; lunch</p>
     </div>
-    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span></span></div>
+    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span></span><span class="bookedbadge"></span></div>
   </header>
   <div class="cruise"><span class="ck">Cruise</span><span>~30 min · 1 lock from Argens-Minervois</span></div><ul class="todo"><li>10-min uphill walk to Château de Paraza (Riquet&#x27;s residence during the canal&#x27;s construction)</li><li>Guided tour + wine tasting, €45pp — book Lucile Danglas 09 64 33 37 43 (opens 10am)</li><li>Worth a wander even if you skip the tasting</li></ul><p class="eat">Lunch: OKN9 — canal-side terrace, French &amp; Mediterranean. Booking recommended: +33 7 49 48 48 55.</p>
   <footer class="card-ft">
@@ -854,7 +866,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       </div>
     </div>
   </footer>
-  <div class="slotpick" data-id="canal-paraza"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="canal-paraza"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-argeliers">
@@ -863,7 +875,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Argeliers</h3>
       <p class="sub">Day 2 · overnight</p>
     </div>
-    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span></span></div>
+    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span></span><span class="bookedbadge"></span></div>
   </header>
   <div class="cruise"><span class="ck">Cruise</span><span>~2 hrs · 0 locks from Paraza, over the Répudre aqueduct</span></div><ul class="todo"><li>17th-century château</li><li>Pleasant canal-side walks</li><li>Good cycling along the towpath</li><li>Quiet village surrounded by vineyards</li></ul><p class="eat">Dinner: Le Chat Qui Pêche — canal-side, French cuisine, outdoor terrace. Booking recommended: +33 4 68 45 37 42.</p>
   <footer class="card-ft">
@@ -875,7 +887,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       </div>
     </div>
   </footer>
-  <div class="slotpick" data-id="canal-argeliers"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="canal-argeliers"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-le-somail">
@@ -884,7 +896,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Le Somail</h3>
       <p class="sub">Day 3 · the highlight</p>
     </div>
-    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span></span></div>
+    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span></span><span class="bookedbadge"></span></div>
   </header>
   <div class="cruise"><span class="ck">Cruise</span><span>~1 hr · 0 locks from Argeliers</span></div><ul class="todo"><li>Historic stone bridge</li><li>Floating grocery barge</li><li>Le Trouve Tout du Livre antiquarian bookshop</li><li>Canal-side cafés</li><li>Ice cream at Le Glacier du Somail</li><li>Towpath walk or bike ride</li></ul><p class="eat">Lunch on board or Le Comptoir Nature.</p><p class="tip">Optional: cycle ~20 min north to the L&#x27;Oulibo olive cooperative for a guided tour + tasting (book 04 68 41 88 84).</p>
   <footer class="card-ft">
@@ -896,7 +908,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       </div>
     </div>
   </footer>
-  <div class="slotpick" data-id="canal-le-somail"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="canal-le-somail"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-lac-de-jouarres">
@@ -905,7 +917,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Lac de Jouarres</h3>
       <p class="sub">Optional · swim, by Homps</p>
     </div>
-    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span></span></div>
+    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span></span><span class="bookedbadge"></span></div>
   </header>
   <ul class="todo"><li>1.4 km from Homps</li><li>Lifeguarded swimming (12:30–19:30)</li><li>Inflatable water park (12:00–19:00)</li><li>Gravel beach, lakeside restaurant, free parking</li></ul><p class="tip">Best on the first afternoon or the last morning before handover. Water shoes help.</p>
   <footer class="card-ft">
@@ -917,7 +929,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       </div>
     </div>
   </footer>
-  <div class="slotpick" data-id="canal-lac-de-jouarres"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="canal-lac-de-jouarres"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card canal" data-plan-id="canal-carcassonne">
@@ -926,7 +938,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Carcassonne</h3>
       <p class="sub">Optional · taxi from Homps</p>
     </div>
-    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span></span></div>
+    <div class="chips"><span class="marks gold big"><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="off">○</span></span><span class="bookedbadge"></span></div>
   </header>
   <div class="cruise"><span class="ck">Cruise</span><span>~30 min by taxi from Homps (not on the cruise)</span></div><ul class="todo"><li>Walled medieval Cité — free to enter</li><li>Château Comtal + ramparts — €19, Alexander free (book ahead)</li><li>Market at Place Carnot on Tue/Thu/Sat mornings</li></ul><p class="tip">If the citadel is a must, do it on the arrival afternoon or after handover.</p>
   <footer class="card-ft">
@@ -938,7 +950,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       </div>
     </div>
   </footer>
-  <div class="slotpick" data-id="canal-carcassonne"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="canal-carcassonne"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="20">Mon 20 Jul</option><option value="21">Tue 21 Jul</option><option value="22">Wed 22 Jul</option><option value="23">Thu 23 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article></div>
   </section>
 
@@ -965,7 +977,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Sagrada Família</h3>
       <p class="sub">Basilica / Gaudí landmark <span class="dot">&middot;</span> Eixample</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -994,7 +1006,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Sagrada Família (L2/L5)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-sagrada-fam-lia"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-sagrada-fam-lia"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-park-g-ell">
@@ -1004,7 +1016,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Park Güell</h3>
       <p class="sub">Gaudí park <span class="dot">&middot;</span> Gràcia / Carmel</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1033,7 +1045,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Vallcarca (L3) + outdoor escalators; Lesseps (L3)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-park-g-ell"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-park-g-ell"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-casa-batll">
@@ -1043,7 +1055,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Casa Batlló</h3>
       <p class="sub">Gaudí house <span class="dot">&middot;</span> Eixample / Passeig de Gràcia</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1072,7 +1084,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Passeig de Gràcia (L2/L3/L4)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-casa-batll"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-casa-batll"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-la-pedrera-casa-mil">
@@ -1082,7 +1094,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>La Pedrera / Casa Milà</h3>
       <p class="sub">Gaudí house <span class="dot">&middot;</span> Eixample / Passeig de Gràcia</p>
     </div>
-    <div class="chips"><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1111,7 +1123,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Diagonal (L3/L5), Passeig de Gràcia</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-la-pedrera-casa-mil"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-la-pedrera-casa-mil"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-l-aqu-rium-de-barcelona">
@@ -1121,7 +1133,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>L&#x27;Aquàrium de Barcelona</h3>
       <p class="sub">Aquarium <span class="dot">&middot;</span> Port Vell</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1150,7 +1162,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Barceloneta (L4) or Drassanes (L3)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-l-aqu-rium-de-barcelona"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-l-aqu-rium-de-barcelona"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-cosmocaixa">
@@ -1160,7 +1172,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>CosmoCaixa</h3>
       <p class="sub">Science museum <span class="dot">&middot;</span> Sant Gervasi / Tibidabo edge</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1189,7 +1201,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Av. Tibidabo FGC + bus 196</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-cosmocaixa"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-cosmocaixa"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-parc-de-la-ciutadella">
@@ -1199,7 +1211,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Parc de la Ciutadella</h3>
       <p class="sub">Park / lake <span class="dot">&middot;</span> Ciutat Vella</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1228,7 +1240,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Arc de Triomf (L1) or Ciutadella–Vila Olímpica (L4)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-parc-de-la-ciutadella"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-parc-de-la-ciutadella"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-nova-ic-ria-beach">
@@ -1238,7 +1250,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Nova Icària Beach</h3>
       <p class="sub">Beach <span class="dot">&middot;</span> Poblenou / Sant Martí</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1267,7 +1279,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Ciutadella–Vila Olímpica (L4) / Poblenou (L4)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-nova-ic-ria-beach"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-nova-ic-ria-beach"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-barcelona-cathedral">
@@ -1277,7 +1289,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Barcelona Cathedral</h3>
       <p class="sub">Cathedral / historic site <span class="dot">&middot;</span> Gothic Quarter</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1306,7 +1318,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Jaume I (L4), Liceu (L3), Urquinaona (L1/L4)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-barcelona-cathedral"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-barcelona-cathedral"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-hospital-de-sant-pau">
@@ -1316,7 +1328,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Hospital de Sant Pau</h3>
       <p class="sub">Art Nouveau site <span class="dot">&middot;</span> Eixample / Sant Pau</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1345,7 +1357,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Sant Pau | Dos de Maig (L5), Sagrada Família (L2/L5)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-hospital-de-sant-pau"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-hospital-de-sant-pau"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-passeig-de-gr-cia">
@@ -1355,7 +1367,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Passeig de Gràcia</h3>
       <p class="sub">Boulevard / shopping <span class="dot">&middot;</span> Eixample</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1384,7 +1396,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Passeig de Gràcia (L2/L3/L4), Diagonal (L3/L5)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-passeig-de-gr-cia"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-passeig-de-gr-cia"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-port-vell">
@@ -1394,7 +1406,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Port Vell</h3>
       <p class="sub">Waterfront / marina <span class="dot">&middot;</span> Port Vell / Waterfront</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1423,7 +1435,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Barceloneta (L4), Drassanes (L3)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-port-vell"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-port-vell"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-montju-c-cable-car">
@@ -1433,7 +1445,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Montjuïc Cable Car</h3>
       <p class="sub">Cable car / viewpoint <span class="dot">&middot;</span> Montjuïc</p>
     </div>
-    <div class="chips"><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1462,7 +1474,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Paral·lel (L2/L3) + funicular then cable car</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-montju-c-cable-car"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-montju-c-cable-car"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-magic-fountain-of-montju-c">
@@ -1472,7 +1484,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Magic Fountain of Montjuïc</h3>
       <p class="sub">Evening show <span class="dot">&middot;</span> Montjuïc / Plaça Espanya</p>
     </div>
-    <div class="chips"></div>
+    <div class="chips"><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1501,7 +1513,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Espanya (L1/L3)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-magic-fountain-of-montju-c"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-magic-fountain-of-montju-c"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Barcelona" data-plan-id="barcelona-bunkers-del-carmel">
@@ -1511,7 +1523,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Bunkers del Carmel</h3>
       <p class="sub">Viewpoint <span class="dot">&middot;</span> Carmel</p>
     </div>
-    <div class="chips"><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1540,7 +1552,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Bus/taxi closest; metro Alfons X + uphill</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="barcelona-bunkers-del-carmel"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="barcelona-bunkers-del-carmel"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="24">Fri 24 Jul</option><option value="25">Sat 25 Jul</option><option value="26">Sun 26 Jul</option><option value="27">Mon 27 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article></div>
   </section>
 
@@ -1567,7 +1579,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Eiffel Tower</h3>
       <p class="sub">Landmark <span class="dot">&middot;</span> 7th / Champ de Mars</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1596,7 +1608,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Bir-Hakeim (M6), Champ de Mars–Tour Eiffel RER C, École Militaire (M8)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-eiffel-tower"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-eiffel-tower"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-louvre-museum">
@@ -1606,7 +1618,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Louvre Museum</h3>
       <p class="sub">Museum <span class="dot">&middot;</span> 1st / Louvre–Tuileries</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1635,7 +1647,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Palais Royal–Musée du Louvre (M1/M7), Louvre–Rivoli (M1)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-louvre-museum"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-louvre-museum"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-mus-e-d-orsay">
@@ -1645,7 +1657,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Musée d&#x27;Orsay</h3>
       <p class="sub">Museum <span class="dot">&middot;</span> 7th / Saint-Germain edge</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1674,7 +1686,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Solférino (M12), Musée d&#x27;Orsay RER C</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-mus-e-d-orsay"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-mus-e-d-orsay"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-sainte-chapelle">
@@ -1684,7 +1696,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Sainte-Chapelle</h3>
       <p class="sub">Historic chapel <span class="dot">&middot;</span> Île de la Cité</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1713,7 +1725,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Cité (M4), Châtelet (M1/M4/M7/M11/M14)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-sainte-chapelle"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-sainte-chapelle"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-notre-dame-de-paris">
@@ -1723,7 +1735,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Notre-Dame de Paris</h3>
       <p class="sub">Cathedral <span class="dot">&middot;</span> Île de la Cité</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1752,7 +1764,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Cité (M4), Saint-Michel Notre-Dame RER B/C</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-notre-dame-de-paris"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-notre-dame-de-paris"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-seine-river-cruise">
@@ -1762,7 +1774,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Seine River Cruise</h3>
       <p class="sub">Cruise <span class="dot">&middot;</span> Seine / Pont Neuf or Alma</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1791,7 +1803,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Pont Neuf (M7) or Alma-Marceau (M9) depending operator</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-seine-river-cruise"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-seine-river-cruise"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-les-invalides-mus-e-de-l-arm-e">
@@ -1801,7 +1813,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Les Invalides / Musée de l&#x27;Armée</h3>
       <p class="sub">Museum / monument <span class="dot">&middot;</span> 7th / Invalides</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1830,7 +1842,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">La Tour-Maubourg (M8), Invalides (M8/M13/RER C), Varenne (M13)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-les-invalides-mus-e-de-l-arm-e"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-les-invalides-mus-e-de-l-arm-e"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-montmartre-sacr-c-ur">
@@ -1840,7 +1852,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Montmartre &amp; Sacré-Cœur</h3>
       <p class="sub">District / basilica <span class="dot">&middot;</span> 18th / Montmartre</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1869,7 +1881,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Anvers (M2) + funicular; Abbesses (M12) is scenic but stairs</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-montmartre-sacr-c-ur"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-montmartre-sacr-c-ur"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-arc-de-triomphe">
@@ -1879,7 +1891,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Arc de Triomphe</h3>
       <p class="sub">Monument / viewpoint <span class="dot">&middot;</span> 8th / Champs-Élysées</p>
     </div>
-    <div class="chips"><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1908,7 +1920,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Charles de Gaulle–Étoile (M1/M2/M6/RER A)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-arc-de-triomphe"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-arc-de-triomphe"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-galeries-lafayette-rooftop">
@@ -1918,7 +1930,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Galeries Lafayette Rooftop</h3>
       <p class="sub">Free viewpoint / shopping <span class="dot">&middot;</span> 9th / Opéra</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1947,7 +1959,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Chaussée d&#x27;Antin–La Fayette (M7/M9), Opéra (M3/M7/M8/RER A)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-galeries-lafayette-rooftop"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-galeries-lafayette-rooftop"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-panth-on">
@@ -1957,7 +1969,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Panthéon</h3>
       <p class="sub">Monument <span class="dot">&middot;</span> 5th / Latin Quarter</p>
     </div>
-    <div class="chips"><span class="chip heat">Heat-block OK</span></div>
+    <div class="chips"><span class="chip heat">Heat-block OK</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -1986,7 +1998,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Luxembourg RER B, Cardinal Lemoine (M10)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-panth-on"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-panth-on"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-jardin-d-acclimatation">
@@ -1996,7 +2008,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Jardin d&#x27;Acclimatation</h3>
       <p class="sub">Children&#x27;s amusement park <span class="dot">&middot;</span> 16th / Bois de Boulogne</p>
     </div>
-    <div class="chips"><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -2025,7 +2037,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Les Sablons (M1)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-jardin-d-acclimatation"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-jardin-d-acclimatation"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-jardin-du-luxembourg">
@@ -2035,7 +2047,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Jardin du Luxembourg</h3>
       <p class="sub">Garden / playground <span class="dot">&middot;</span> 6th</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -2064,7 +2076,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Luxembourg RER B, Odéon (M4/M10)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-jardin-du-luxembourg"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-jardin-du-luxembourg"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-jardin-des-tuileries">
@@ -2074,7 +2086,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Jardin des Tuileries</h3>
       <p class="sub">Garden / funfair <span class="dot">&middot;</span> 1st</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -2103,7 +2115,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Tuileries (M1), Concorde (M1/M8/M12)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-jardin-des-tuileries"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-jardin-des-tuileries"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-champ-de-mars">
@@ -2113,7 +2125,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Champ de Mars</h3>
       <p class="sub">Park / playground <span class="dot">&middot;</span> 7th</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -2142,7 +2154,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">École Militaire (M8), Bir-Hakeim (M6)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-champ-de-mars"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-champ-de-mars"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article>
 
 <article class="card" data-city="Paris" data-plan-id="paris-place-des-vosges">
@@ -2152,7 +2164,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <h3>Place des Vosges</h3>
       <p class="sub">Square / park <span class="dot">&middot;</span> 4th / Marais</p>
     </div>
-    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span></div>
+    <div class="chips"><span class="chip ms">Must-see</span><span class="chip nheat">Avoid midday</span><span class="bookedbadge"></span></div>
   </header>
 
   <div class="scores">
@@ -2181,7 +2193,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <span class="metro">Saint-Paul (M1), Bastille (M1/M5/M8), Chemin Vert (M8)</span>
     </div>
   </footer>
-  <div class="slotpick" data-id="paris-place-des-vosges"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div></div>
+  <div class="slotpick" data-id="paris-place-des-vosges"><span class="slotlbl">Plan this:</span><select class="daysel" aria-label="Choose day"><option value="">Add to a day…</option><option value="19">Sun 19 Jul</option><option value="28">Tue 28 Jul</option><option value="29">Wed 29 Jul</option><option value="30">Thu 30 Jul</option><option value="31">Fri 31 Jul</option></select><div class="slotrow"><button class="slotbtn morn" data-slot="morning">Morning</button><button class="slotbtn heat" data-slot="heat">Heat 14–18</button><button class="slotbtn eve" data-slot="evening">Evening</button></div><div class="bookbox"><label class="bchk"><input type="checkbox" data-book><span>Booked</span></label><span class="btat">at</span><input type="time" class="btime" data-btime aria-label="Booked time"></div></div>
 </article></div>
   </section>
 
@@ -2206,12 +2218,14 @@ a.dpkm.far{color:var(--am);font-weight:700}
 const MAP_DATA = {"paris": [{"id": "paris-eiffel-tower", "name": "Eiffel Tower", "lat": 48.8584, "lng": 2.2945, "rank": 1, "must": true, "alex": false, "overall": 5, "url": "https://ticket.toureiffel.paris/en", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8584,2.2945", "city": "Paris"}, {"id": "paris-louvre-museum", "name": "Louvre Museum", "lat": 48.8606, "lng": 2.3376, "rank": 8, "must": true, "alex": false, "overall": 5, "url": "https://ticket.louvre.fr/en", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8606,2.3376", "city": "Paris"}, {"id": "paris-mus-e-d-orsay", "name": "Mus\u00e9e d'Orsay", "lat": 48.86, "lng": 2.3266, "rank": 9, "must": true, "alex": false, "overall": 5, "url": "https://billetterie.musee-orsay.fr/billets-d-entree-au-musee-d-orsay-expo-css5-museeorsay-lgen-pg1-rg28911.html", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.86,2.3266", "city": "Paris"}, {"id": "paris-sainte-chapelle", "name": "Sainte-Chapelle", "lat": 48.8554, "lng": 2.345, "rank": 12, "must": true, "alex": false, "overall": 4, "url": "https://tickets.monuments-nationaux.fr/en-GB/families?site=2035141861660400306", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8554,2.345", "city": "Paris"}, {"id": "paris-notre-dame-de-paris", "name": "Notre-Dame de Paris", "lat": 48.853, "lng": 2.3499, "rank": 10, "must": true, "alex": false, "overall": 5, "url": "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.853,2.3499", "city": "Paris"}, {"id": "paris-seine-river-cruise", "name": "Seine River Cruise", "lat": 48.8565, "lng": 2.341, "rank": 2, "must": true, "alex": true, "overall": 5, "url": "https://www.vedettesdupontneuf.com/cruises/", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8565,2.341", "city": "Paris"}, {"id": "paris-les-invalides-mus-e-de-l-arm-e", "name": "Les Invalides / Mus\u00e9e de l'Arm\u00e9e", "lat": 48.8566, "lng": 2.3125, "rank": 3, "must": true, "alex": false, "overall": 5, "url": "https://billetterie.musee-armee.fr/en-GB/products", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8566,2.3125", "city": "Paris"}, {"id": "paris-montmartre-sacr-c-ur", "name": "Montmartre & Sacr\u00e9-C\u0153ur", "lat": 48.8867, "lng": 2.3431, "rank": 13, "must": true, "alex": false, "overall": 4, "url": "https://www.sacre-coeur-montmartre.com/english/", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8867,2.3431", "city": "Paris"}, {"id": "paris-arc-de-triomphe", "name": "Arc de Triomphe", "lat": 48.8738, "lng": 2.295, "rank": 0, "must": false, "alex": false, "overall": 4, "url": "https://tickets.monuments-nationaux.fr/en-GB/families?site=2035141861660400317", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8738,2.295", "city": "Paris"}, {"id": "paris-galeries-lafayette-rooftop", "name": "Galeries Lafayette Rooftop", "lat": 48.8738, "lng": 2.332, "rank": 11, "must": true, "alex": false, "overall": 5, "url": "https://haussmann.galerieslafayette.com/en/terrace/", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8738,2.332", "city": "Paris"}, {"id": "paris-panth-on", "name": "Panth\u00e9on", "lat": 48.8462, "lng": 2.3464, "rank": 0, "must": false, "alex": false, "overall": 4, "url": "https://tickets.monuments-nationaux.fr/en-GB/families?site=2035141861660400318", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8462,2.3464", "city": "Paris"}, {"id": "paris-jardin-d-acclimatation", "name": "Jardin d'Acclimatation", "lat": 48.8783, "lng": 2.2637, "rank": 0, "must": false, "alex": true, "overall": 4, "url": "https://www.jardindacclimatation.fr/", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8783,2.2637", "city": "Paris"}, {"id": "paris-jardin-du-luxembourg", "name": "Jardin du Luxembourg", "lat": 48.8462, "lng": 2.3372, "rank": 4, "must": true, "alex": true, "overall": 5, "url": "https://jardin.senat.fr/", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8462,2.3372", "city": "Paris"}, {"id": "paris-jardin-des-tuileries", "name": "Jardin des Tuileries", "lat": 48.8635, "lng": 2.3275, "rank": 5, "must": true, "alex": true, "overall": 5, "url": "https://www.paris.fr/lieux/jardin-des-tuileries-1795", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8635,2.3275", "city": "Paris"}, {"id": "paris-champ-de-mars", "name": "Champ de Mars", "lat": 48.8556, "lng": 2.2986, "rank": 6, "must": true, "alex": true, "overall": 5, "url": "https://www.paris.fr/lieux/parc-du-champ-de-mars-1807", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8556,2.2986", "city": "Paris"}, {"id": "paris-place-des-vosges", "name": "Place des Vosges", "lat": 48.8554, "lng": 2.3655, "rank": 7, "must": true, "alex": true, "overall": 5, "url": "https://www.paris.fr/lieux/place-des-vosges-1812", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8554,2.3655", "city": "Paris"}], "barcelona": [{"id": "barcelona-sagrada-fam-lia", "name": "Sagrada Fam\u00edlia", "lat": 41.4036, "lng": 2.1744, "rank": 1, "must": true, "alex": false, "overall": 5, "url": "https://sagradafamilia.org/en/tickets", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.4036,2.1744", "city": "Barcelona"}, {"id": "barcelona-park-g-ell", "name": "Park G\u00fcell", "lat": 41.4145, "lng": 2.1527, "rank": 11, "must": true, "alex": true, "overall": 5, "url": "https://parkguell.barcelona/en/buy-tickets", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.4145,2.1527", "city": "Barcelona"}, {"id": "barcelona-casa-batll", "name": "Casa Batll\u00f3", "lat": 41.3917, "lng": 2.165, "rank": 2, "must": true, "alex": false, "overall": 5, "url": "https://www.casabatllo.es/en/online-tickets/", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.3917,2.165", "city": "Barcelona"}, {"id": "barcelona-la-pedrera-casa-mil", "name": "La Pedrera / Casa Mil\u00e0", "lat": 41.3954, "lng": 2.162, "rank": 0, "must": false, "alex": false, "overall": 4, "url": "https://www.lapedrera.com/en/tickets/", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.3954,2.162", "city": "Barcelona"}, {"id": "barcelona-l-aqu-rium-de-barcelona", "name": "L'Aqu\u00e0rium de Barcelona", "lat": 41.3765, "lng": 2.1836, "rank": 3, "must": true, "alex": true, "overall": 5, "url": "https://www.aquariumbcn.com/en/visit/prices/", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.3765,2.1836", "city": "Barcelona"}, {"id": "barcelona-cosmocaixa", "name": "CosmoCaixa", "lat": 41.4118, "lng": 2.1339, "rank": 4, "must": true, "alex": true, "overall": 5, "url": "https://cosmocaixa.org/es/", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.4118,2.1339", "city": "Barcelona"}, {"id": "barcelona-parc-de-la-ciutadella", "name": "Parc de la Ciutadella", "lat": 41.3888, "lng": 2.187, "rank": 5, "must": true, "alex": true, "overall": 5, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/parks-and-gardens/parc-de-la-ciutadella_92086011952.html", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.3888,2.187", "city": "Barcelona"}, {"id": "barcelona-nova-ic-ria-beach", "name": "Nova Ic\u00e0ria Beach", "lat": 41.3915, "lng": 2.2005, "rank": 6, "must": true, "alex": true, "overall": 5, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/nova-icaria-beach_92086011905.html", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.3915,2.2005", "city": "Barcelona"}, {"id": "barcelona-barcelona-cathedral", "name": "Barcelona Cathedral", "lat": 41.3839, "lng": 2.1762, "rank": 7, "must": true, "alex": false, "overall": 5, "url": "https://catedralbcn.org/", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.3839,2.1762", "city": "Barcelona"}, {"id": "barcelona-hospital-de-sant-pau", "name": "Hospital de Sant Pau", "lat": 41.4136, "lng": 2.1744, "rank": 8, "must": true, "alex": false, "overall": 5, "url": "https://santpaubarcelona.org/en/", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.4136,2.1744", "city": "Barcelona"}, {"id": "barcelona-passeig-de-gr-cia", "name": "Passeig de Gr\u00e0cia", "lat": 41.393, "lng": 2.1637, "rank": 10, "must": true, "alex": false, "overall": 5, "url": "https://www.barcelonaturisme.com/wv3/en/page/1241/passeig-de-gracia.html", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.393,2.1637", "city": "Barcelona"}, {"id": "barcelona-port-vell", "name": "Port Vell", "lat": 41.3758, "lng": 2.183, "rank": 9, "must": true, "alex": false, "overall": 5, "url": "https://www.barcelonaturisme.com/wv3/en/page/64/port-vell.html", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.3758,2.183", "city": "Barcelona"}, {"id": "barcelona-montju-c-cable-car", "name": "Montju\u00efc Cable Car", "lat": 41.3641, "lng": 2.1641, "rank": 0, "must": false, "alex": false, "overall": 3, "url": "https://www.telefericdemontjuic.cat/en/tickets", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.3641,2.1641", "city": "Barcelona"}, {"id": "barcelona-magic-fountain-of-montju-c", "name": "Magic Fountain of Montju\u00efc", "lat": 41.3711, "lng": 2.1517, "rank": 0, "must": false, "alex": true, "overall": 4, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/magic-fountain", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.3711,2.1517", "city": "Barcelona"}, {"id": "barcelona-bunkers-del-carmel", "name": "Bunkers del Carmel", "lat": 41.4194, "lng": 2.162, "rank": 0, "must": false, "alex": false, "overall": 3, "url": "https://www.barcelona.cat/en/what-to-do-in-bcn/parks-and-gardens/turo-de-la-rovira_99400393480.html", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.4194,2.162", "city": "Barcelona"}], "canal": [{"id": "canal-homps", "name": "Homps", "lat": 43.2712, "lng": 2.7176, "stars": 3, "role": "Base \u00b7 start & finish", "url": "https://www.google.com/maps/search/?api=1&query=43.2712,2.7176", "dir": "https://www.google.com/maps/search/?api=1&query=43.2712,2.7176", "city": "Canal"}, {"id": "canal-argens-minervois", "name": "Argens-Minervois", "lat": 43.2637, "lng": 2.7566, "stars": 3, "role": "Day 1 \u00b7 overnight", "url": "https://www.google.com/maps/search/?api=1&query=43.2637,2.7566", "dir": "https://www.google.com/maps/search/?api=1&query=43.2637,2.7566", "city": "Canal"}, {"id": "canal-paraza", "name": "Paraza", "lat": 43.2559, "lng": 2.8028, "stars": 4, "role": "Day 2 \u00b7 wine & lunch", "url": "https://www.google.com/maps/search/?api=1&query=43.2559,2.8028", "dir": "https://www.google.com/maps/search/?api=1&query=43.2559,2.8028", "city": "Canal"}, {"id": "canal-argeliers", "name": "Argeliers", "lat": 43.2985, "lng": 2.913, "stars": 4, "role": "Day 2 \u00b7 overnight", "url": "https://www.google.com/maps/search/?api=1&query=43.2985,2.913", "dir": "https://www.google.com/maps/search/?api=1&query=43.2985,2.913", "city": "Canal"}, {"id": "canal-le-somail", "name": "Le Somail", "lat": 43.2758, "lng": 2.8916, "stars": 5, "role": "Day 3 \u00b7 the highlight", "url": "https://www.google.com/maps/search/?api=1&query=43.2758,2.8916", "dir": "https://www.google.com/maps/search/?api=1&query=43.2758,2.8916", "city": "Canal"}, {"id": "canal-lac-de-jouarres", "name": "Lac de Jouarres", "lat": 43.268, "lng": 2.73, "stars": 4, "role": "Optional \u00b7 swim, by Homps", "url": "https://www.google.com/maps/search/?api=1&query=43.268,2.73", "dir": "https://www.google.com/maps/search/?api=1&query=43.268,2.73", "city": "Canal"}, {"id": "canal-carcassonne", "name": "Carcassonne", "lat": 43.2061, "lng": 2.3644, "stars": 4, "role": "Optional \u00b7 taxi from Homps", "url": "https://www.google.com/maps/search/?api=1&query=43.2061,2.3644", "dir": "https://www.google.com/maps/search/?api=1&query=43.2061,2.3644", "city": "Canal"}], "stays": {"paris": [{"id": "stay-paris-0", "name": "Charles V (Le Marais)", "lat": 48.8543, "lng": 2.3607, "note": "Final Paris base, 28\u201331 Jul", "dir": "https://www.google.com/maps/dir/?api=1&destination=48.8543,2.3607", "city": "Paris", "stay": true}], "barcelona": [{"id": "stay-barcelona-0", "name": "Meli\u00e1 Barcelona Sky (Poblenou)", "lat": 41.4045, "lng": 2.1935, "note": "Barcelona base, 24\u201328 Jul", "dir": "https://www.google.com/maps/dir/?api=1&destination=41.4045,2.1935", "city": "Barcelona", "stay": true}]}, "journey": [{"name": "Paris", "lat": 48.8566, "lng": 2.3522, "leg": "Base 1 &amp; 5"}, {"name": "Disneyland Paris", "lat": 48.8722, "lng": 2.7758, "leg": "18\u201319 Jul"}, {"name": "Homps \u00b7 Canal du Midi", "lat": 43.2712, "lng": 2.7176, "leg": "20\u201324 Jul"}, {"name": "Barcelona", "lat": 41.3792, "lng": 2.1401, "leg": "24\u201328 Jul"}], "geo": {"paris": {"river": [[48.838, 2.279], [48.842, 2.2775], [48.85, 2.2795], [48.856, 2.2845], [48.86, 2.2905], [48.8625, 2.2985], [48.864, 2.308], [48.8635, 2.316], [48.8615, 2.3255], [48.8595, 2.334], [48.8565, 2.34], [48.8548, 2.347], [48.852, 2.356], [48.847, 2.366], [48.842, 2.376], [48.838, 2.384]], "label": {"text": "Seine", "at": [48.8405, 2.379]}}, "barcelona": {"coast": [[41.347, 2.125], [41.356, 2.15], [41.366, 2.172], [41.376, 2.188], [41.387, 2.198], [41.397, 2.206], [41.408, 2.218], [41.418, 2.228]], "label": {"text": "Mediterranean", "at": [41.369, 2.212]}}, "canal": {"label": {"text": "Canal du Midi", "at": [43.269, 2.842]}}}};
 
 /* ---------- planner state (persists on this device; falls back to memory) ---------- */
-const KP='fs26_plan_v2', KD='fs26_done';
+const KP='fs26_plan_v2', KD='fs26_done', KB='fs26_book_v1';
 function loadSet(k){try{return new Set(JSON.parse(localStorage.getItem(k)||'[]'))}catch(e){return new Set()}}
 function saveSet(k,s){try{localStorage.setItem(k,JSON.stringify([...s]))}catch(e){}}
 function loadObj(k){try{return JSON.parse(localStorage.getItem(k)||'{}')||{}}catch(e){return {}}}
 function saveObj(k,o){try{localStorage.setItem(k,JSON.stringify(o))}catch(e){}}
-const PLAN=loadObj(KP), DONE=loadSet(KD);
+const PLAN=loadObj(KP), DONE=loadSet(KD), BOOK=loadObj(KB);
+function isBooked(id){const e=BOOK[id]; return !!(e && (e.b || e.t));}
+function bookedTime(id){const e=BOOK[id]; return (e&&e.t)?e.t:'';}
 // normalise old {id:'slot'} format to {id:{d,slot}}
 for(const id in PLAN){ if(typeof PLAN[id]==='string') PLAN[id]={d:null,slot:PLAN[id]}; }
 const DAYINFO = {"19": {"city": "Paris", "base": [48.8636, 2.3335], "label": "Sun 19 Jul"}, "28": {"city": "Paris", "base": [48.8543, 2.3607], "label": "Tue 28 Jul"}, "29": {"city": "Paris", "base": [48.8543, 2.3607], "label": "Wed 29 Jul"}, "30": {"city": "Paris", "base": [48.8543, 2.3607], "label": "Thu 30 Jul"}, "31": {"city": "Paris", "base": [48.8543, 2.3607], "label": "Fri 31 Jul"}, "24": {"city": "Barcelona", "base": [41.4045, 2.1935], "label": "Fri 24 Jul"}, "25": {"city": "Barcelona", "base": [41.4045, 2.1935], "label": "Sat 25 Jul"}, "26": {"city": "Barcelona", "base": [41.4045, 2.1935], "label": "Sun 26 Jul"}, "27": {"city": "Barcelona", "base": [41.4045, 2.1935], "label": "Mon 27 Jul"}, "20": {"city": "Canal", "base": [43.2712, 2.7176], "label": "Mon 20 Jul"}, "21": {"city": "Canal", "base": [43.2637, 2.7566], "label": "Tue 21 Jul"}, "22": {"city": "Canal", "base": [43.2985, 2.913], "label": "Wed 22 Jul"}, "23": {"city": "Canal", "base": [43.2758, 2.8916], "label": "Thu 23 Jul"}};
@@ -2241,22 +2255,26 @@ function hopLink(it){
   const u=`https://www.google.com/maps/dir/?api=1&origin=${it._from[0]},${it._from[1]}&destination=${it.lat},${it.lng}&travelmode=${mode}`;
   return `<a class="dpkm route ${it._km>2.2?'far':''}" href="${u}" target="_blank" rel="noopener">${txt} \u203a</a>`;
 }
-// order a day's picks: morning -> heat -> evening -> anytime, each nearest-first from the base
+// order a day's picks: morning -> heat -> evening -> anytime; within a slot, booked times first (by time), then nearest-first
 function optimiseDay(dayNum){
   const items=Object.keys(PLAN).filter(id=>PLAN[id].d===dayNum && META[id])
-    .map(id=>({id,slot:PLAN[id].slot,...META[id]}));
+    .map(id=>({id,slot:PLAN[id].slot,bt:bookedTime(id),...META[id]}));
   const base=(DAYINFO[dayNum]&&DAYINFO[dayNum].base&&DAYINFO[dayNum].base[0])?DAYINFO[dayNum].base:null;
   const groups={0:[],1:[],2:[],9:[]};
   items.forEach(it=>groups[it.slot!=null?SLOT_ORDER[it.slot]:9].push(it));
   const ordered=[]; let cur=base;
   [0,1,2,9].forEach(g=>{
-    const pool=groups[g].slice(); let start=cur||base;
-    while(pool.length){
+    let pool=groups[g].slice();
+    // fixed-time bookings lead the slot, in chronological order
+    const timed=pool.filter(x=>x.bt).sort((a,b)=>a.bt.localeCompare(b.bt));
+    let untimed=pool.filter(x=>!x.bt);
+    let start=cur||base;
+    timed.forEach(nx=>{ nx._from=start?[start[0],start[1]]:null; nx._km=start?haversine(start,[nx.lat,nx.lng]):null; ordered.push(nx); start=[nx.lat,nx.lng]; });
+    while(untimed.length){
       let bi=0,bd=Infinity;
-      for(let i=0;i<pool.length;i++){const d=start?haversine(start,[pool[i].lat,pool[i].lng]):0; if(d<bd){bd=d;bi=i;}}
-      const nx=pool.splice(bi,1)[0];
-      nx._from=start?[start[0],start[1]]:null;
-      nx._km=start?haversine(start,[nx.lat,nx.lng]):null;
+      for(let i=0;i<untimed.length;i++){const d=start?haversine(start,[untimed[i].lat,untimed[i].lng]):0; if(d<bd){bd=d;bi=i;}}
+      const nx=untimed.splice(bi,1)[0];
+      nx._from=start?[start[0],start[1]]:null; nx._km=start?haversine(start,[nx.lat,nx.lng]):null;
       ordered.push(nx); start=[nx.lat,nx.lng];
     }
     cur=start;
@@ -2524,6 +2542,22 @@ function setDay(id,d){
 function removePlan(id){ delete PLAN[id]; saveObj(KP,PLAN); syncId(id); refreshAll(); }
 function refreshAll(){ refreshCounts(); refreshFab(); renderDayPlans(); if(sheetOpen) renderSheet(); }
 
+function setBooked(id, patch){
+  const e=BOOK[id]||{b:false,t:''}; Object.assign(e,patch);
+  if(!e.b && !e.t) delete BOOK[id]; else BOOK[id]=e;
+  saveObj(KB,BOOK); syncBooking(id); renderDayPlans(); if(sheetOpen) renderSheet();
+}
+function syncBooking(id){
+  const t=bookedTime(id), on=isBooked(id);
+  const card=document.querySelector(`.card[data-plan-id="${id}"]`);
+  if(!card) return;
+  card.classList.toggle('booked', on);
+  const badge=card.querySelector('.bookedbadge');
+  if(badge) badge.textContent = on ? ('Booked'+(t?(' '+t):'')) : '';
+  const cb=card.querySelector('[data-book]'); if(cb) cb.checked=!!(BOOK[id]&&BOOK[id].b);
+  const ti=card.querySelector('[data-btime]'); if(ti) ti.value=t;
+}
+
 function syncId(id){
   const e=PLAN[id]||{}, slot=e.slot, planned=isPlanned(id);
   document.querySelectorAll(`.pin[data-id="${id}"]`).forEach(p=>{
@@ -2563,10 +2597,11 @@ function renderDayPlans(){
     ordered.forEach((it,i)=>{
       const sc=it.slot?('slot-'+it.slot):'slot-none';
       const sl=it.slot?`<span class="dpslot">${SLOT_SHORT[it.slot]}</span>`:'';
+      const bt=it.bt?`<span class="dpbt">${it.bt}</span>`:'';
       const km=(it._km!=null)?hopLink(it):'';
       const link=it.url||it.dir||'#';
       html+=`<div class="dpitem ${sc}"><span class="dpn">${i+1}</span>`
-          +`<span class="dpname"><a href="${link}" target="_blank" rel="noopener">${it.name}</a>${sl}${km}</span>`
+          +`<span class="dpname"><a href="${link}" target="_blank" rel="noopener">${it.name}</a>${bt}${sl}${km}</span>`
           +`<button class="dprm" data-rm="${it.id}" aria-label="Remove">&times;</button></div>`;
     });
     box.innerHTML=html;
@@ -2586,7 +2621,7 @@ function renderSheet(){
     html+=`<div class="plangroup"><h4>${info.label||('Jul '+dn)} <span class="pgcity">${info.city||''}</span></h4>`;
     ordered.forEach((it,i)=>{const sl=it.slot?({morning:'Morning',heat:'Heat 14\u201318',evening:'Evening'})[it.slot]:'Anytime';
       const km=(i>0&&it._km!=null)?` ${hopLink(it)}`:'';
-      html+=`<div class="planitem"><span class="pi-name"><b class="pio">${i+1}</b> <a href="${it.url||it.dir||'#'}" target="_blank" rel="noopener">${it.name}</a> <span class="pi-city">${sl}${km}</span></span>`
+      html+=`<div class="planitem"><span class="pi-name"><b class="pio">${i+1}</b> <a href="${it.url||it.dir||'#'}" target="_blank" rel="noopener">${it.name}</a>${it.bt?` <span class="pi-bt">${it.bt}</span>`:''} <span class="pi-city">${sl}${km}</span></span>`
           +`<button class="pi-x" data-rm="${it.id}">Remove</button></div>`;
     });
     html+='</div>';
@@ -2622,6 +2657,14 @@ document.addEventListener('DOMContentLoaded',()=>{
     const id=sel.closest('.slotpick').dataset.id; setDay(id,sel.value);
   }));
   document.querySelectorAll('.card[data-plan-id]').forEach(c=>syncId(c.dataset.planId));
+  // bookings: wire checkbox + time, restore state
+  document.querySelectorAll('.bookbox [data-book]').forEach(cb=>cb.addEventListener('change',()=>{
+    const id=cb.closest('.card').dataset.planId; setBooked(id,{b:cb.checked});
+  }));
+  document.querySelectorAll('.bookbox [data-btime]').forEach(ti=>ti.addEventListener('change',()=>{
+    const id=ti.closest('.card').dataset.planId; setBooked(id,{t:ti.value, b: ti.value?true:(BOOK[id]&&BOOK[id].b)||false});
+  }));
+  document.querySelectorAll('.card[data-plan-id]').forEach(c=>syncBooking(c.dataset.planId));
   renderDayPlans();
   document.querySelectorAll('.daydone input').forEach(inp=>{
     const d=inp.dataset.day, on=DONE.has(d);
