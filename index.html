@@ -481,6 +481,18 @@ a.dpkm.far{color:var(--am);font-weight:700}
 .bok{font-family:var(--mono);font-size:10px;font-weight:700;color:#2e8b57;white-space:nowrap}
 .bex{font-family:var(--mono);font-size:10px;color:#a06a12;white-space:nowrap}
 
+/* Disney ranked ride lists */
+.rides{list-style:none;margin:0 0 2px;padding:0}
+.rides li{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;padding:4px 0;border-bottom:1px solid var(--card2);font-size:13.5px}
+.rides li:last-child{border-bottom:none}
+.rides .rn{color:var(--ink)}
+.rstars{font-size:11px;letter-spacing:1px;color:var(--gold);white-space:nowrap}
+.rnote{font-family:var(--mono);font-size:9px;color:var(--muted);background:var(--paper2);padding:1px 6px;border-radius:10px;white-space:nowrap}
+.psub2{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--water2);margin:11px 0 3px;font-weight:700}
+.ptip{font-size:12.5px;color:var(--ink2);margin:9px 0 0;padding-left:11px;border-left:2.5px solid var(--gold);line-height:1.45}
+.top10{margin:6px 0 0;padding-left:22px}
+.top10 li{padding:3px 0;font-size:14px;color:var(--ink2)}
+
 @media print{
   *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
   .spine,.planfab,.sheet,.mapctl,.slotpick,.maptools,.daydone{display:none !important}
@@ -581,7 +593,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
     <label class="daydone"><input type="checkbox" data-day="18"> Done</label>
   </div>
   
-  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Extra Magic Time — Peter Pan’s Flight first, then Fantasyland (it’s a small world, Dumbo, Carousel, Snow White). Then Big Thunder (if 1.02 m+), Pirates, Buzz.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">13:00 heat-block lunch at Blue Lagoon (inside Pirates); 14:00–18:00 hotel rest or indoor rides (Phantom Manor, small world).</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Parade, castle at dusk, nighttime show — ear defenders ready.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Rope-drop Extra Magic Time (~08:30, no breakfast first): Peter Pan’s Flight, Buzz, Dumbo, Star Tours. Breakfast ~10:00, then by rank — Big Thunder (1.02 m ✓), Pirates, It’s a Small World.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">13:00 heat-block lunch at Blue Lagoon (inside Pirates); 14:00–18:00 hotel rest or indoor rides (Phantom Manor, small world).</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Parade, castle at dusk, nighttime show — ear defenders ready.</span></div></div>
   <div class="dayplan" data-day="18"></div>
   <div class="anchors"><span class="anchor adult"><b>Adult</b> Rider Switch the big coasters</span><span class="anchor alex"><b>Alexander</b> Castle, carousel, Big Thunder</span></div><div class="bookline mono"><span class="bookpill">Book</span> Character-meal + heat-block lunch tables (app)</div>
 </article>
@@ -596,7 +608,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
     <label class="daydone"><input type="checkbox" data-day="19"> Done</label>
   </div>
   <div class="transit mono">Transfer to Normandy Le Chantier</div>
-  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Extra Magic Time — World of Frozen: claim the free Frozen Ever After virtual queue, then Raiponce; meet Anna / Elsa / Olaf. Then Ratatouille, Cars, Spider-Man W.E.B.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">13:00 lunch at Bistrot Chez Rémy; rest / indoor, then pack and transfer to Paris.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Low-key Paris — Palais Royal gardens + a Tuileries stroll (funfair if running), dinner near the hotel.</span></div></div>
+  <div class="bands"><div class="band"><span class="bl morn">Morning</span><span class="bt">Rope-drop Extra Magic Time (~08:30): claim the free Frozen Ever After virtual queue, then Spider-Man W.E.B., Ratatouille, Slinky Dog. Breakfast ~10:00, then Cars and characters.</span></div><div class="band"><span class="bl hot">Heat 14–18</span><span class="bt">13:00 lunch at Bistrot Chez Rémy; rest / indoor, then pack and transfer to Paris.</span></div><div class="band"><span class="bl eve">Evening</span><span class="bt">Low-key Paris — Palais Royal gardens + a Tuileries stroll (funfair if running), dinner near the hotel.</span></div></div>
   <div class="dayplan" data-day="19"></div>
   <div class="anchors"><span class="anchor adult"><b>Adult</b> Palais Royal in evening light</span><span class="anchor alex"><b>Alexander</b> Tuileries funfair / carousel + crêpe</span></div>
 </article>
@@ -784,39 +796,54 @@ a.dpkm.far{color:var(--am);font-weight:700}
 
   <section class="section" id="disney">
     <div class="board"><span class="leg">LEG 1</span><h2>Disneyland Paris</h2><span class="meta">18–19 Jul · 2 parks</span></div>
-    <p class="lede">On-site hotel, full-board meal plan and <b>Extra Magic Time</b>, no Premier Access. With no fast-track, early starts and Extra Magic Time carry the day. <b>Do-now:</b> book restaurant tables in the app (the meal plan doesn&rsquo;t reserve them) — character meals sell out months ahead.</p>
+    <p class="lede">On-site hotel with <b>Extra Magic Time</b> (early entry, ~08:30 — check the app the night before) and full board; no Premier Access. The play: <b>rope-drop the headliners during Extra Magic Time</b>, then work down by rank. Alexander (1.2 m) is tall enough for everything here bar the most intense coasters. <b>Do-now:</b> book restaurant tables in the app — the meal plan doesn&rsquo;t reserve them, and character meals sell out months ahead.</p>
+
+    <div class="panel">
+      <h3>How to win the morning</h3>
+      <ul>
+        <li><span class="tiptag">Key</span> &nbsp;<b>No sit-down breakfast first.</b> Be at the gates as Extra Magic Time opens, ride the first 2–3 headliners while queues are minimal, then breakfast ~10:00 as the crowds build — usually saves an hour+ of queueing.</li>
+        <li><span class="tiptag">Free</span> &nbsp;<b>Frozen Ever After virtual queue</b> — claim it in the app the instant you enter on Day 2.</li>
+        <li><span class="tiptag">Free</span> &nbsp;<b>Rider Switch</b> at any height ride — one adult waits with Alexander, then swaps without re-queuing.</li>
+        <li><span class="tiptag">Free</span> &nbsp;<b>Single Rider</b> (Crush&rsquo;s Coaster, Hyperspace Mountain, Spider-Man W.E.B., RC Racer) cuts adult waits.</li>
+      </ul>
+    </div>
+
     <div class="two">
       <div class="panel">
-        <h3>Sat 18 Jul<span class="day">Disneyland Park · the castle park</span></h3>
-        <ul>
-          <li><b>Extra Magic Time:</b> Peter Pan&rsquo;s Flight first, then Fantasyland — it&rsquo;s a small world, Dumbo, Carousel, Snow White.</li>
-          <li><b>Late morning:</b> Big Thunder Mountain (if Alexander is 1.02 m+), Pirates, Buzz Lightyear. Use Rider Switch on anything he can&rsquo;t ride.</li>
-          <li><b>13:00 heat-block lunch:</b> Blue Lagoon (inside Pirates) — cool, magical, air-conditioned.</li>
-          <li><b>14:00–18:00:</b> hotel rest, or indoor rides (Pirates, Phantom Manor, small world).</li>
-          <li><b>Evening:</b> parade, castle at dusk, nighttime show — ear defenders ready.</li>
-        </ul>
+        <h3>Day 1 &middot; Sat 18 Jul<span class="day">Disneyland Park</span></h3>
+        <p class="psub2">Extra Magic Time (08:30–09:30) — hit these first</p>
+        <ul class="rides"><li><span class="rn">Peter Pan&#x27;s Flight</span><span class="rstars">★★★★★</span></li><li><span class="rn">Buzz Lightyear Laser Blast</span><span class="rstars">★★★★★</span></li><li><span class="rn">Dumbo the Flying Elephant</span><span class="rstars">★★★★☆</span></li><li><span class="rn">Star Tours</span><span class="rstars">★★★★☆</span><span class="rnote">1.02 m</span></li><li><span class="rn">Orbitron</span><span class="rstars">★★★☆☆</span></li></ul>
+        <p class="ptip">Skip Hyperspace Mountain (intense, 1.20 m) unless Alexander loves coasters.</p>
+        <p class="psub2">Then, by rank</p>
+        <ul class="rides"><li><span class="rn">Big Thunder Mountain</span><span class="rstars">★★★★★</span><span class="rnote">1.02 m</span></li><li><span class="rn">Pirates of the Caribbean</span><span class="rstars">★★★★★</span></li><li><span class="rn">It&#x27;s a Small World</span><span class="rstars">★★★★★</span></li><li><span class="rn">Autopia</span><span class="rstars">★★★★☆</span><span class="rnote">ride with an adult</span></li><li><span class="rn">Phantom Manor</span><span class="rstars">★★★★☆</span></li><li><span class="rn">Alice&#x27;s Curious Labyrinth</span><span class="rstars">★★★★☆</span></li><li><span class="rn">Adventure Isle</span></li><li><span class="rn">Sleeping Beauty Castle</span></li><li><span class="rn">Lancelot Carousel</span></li><li><span class="rn">Mad Hatter&#x27;s Tea Cups</span></li><li><span class="rn">Pinocchio</span></li><li><span class="rn">Snow White</span></li></ul>
+        <p class="ptip"><b>Evening:</b> Disney Stars on Parade + the nighttime castle show — ear defenders ready.</p>
       </div>
       <div class="panel">
-        <h3>Sun 19 Jul<span class="day">Disney Adventure World</span></h3>
-        <ul>
-          <li><b>Extra Magic Time:</b> straight to World of Frozen — claim the free Frozen Ever After virtual queue, then Raiponce Tangled Spin; meet Anna / Elsa / Olaf.</li>
-          <li><b>Late morning:</b> Ratatouille, Cars Road Trip, Spider-Man W.E.B., Slinky Dog, Toy Story Playland.</li>
-          <li><b>13:00 heat-block lunch:</b> Bistrot Chez Rémy (Ratatouille) — book early.</li>
-          <li><b>14:00–18:00:</b> hotel rest or indoor; pack — you move to the Paris base after.</li>
-          <li><b>Late afternoon:</b> last favourites, then transfer to Normandy Le Chantier.</li>
-        </ul>
+        <h3>Day 2 &middot; Sun 19 Jul<span class="day">Disney Adventure World</span></h3>
+        <p class="psub2">Extra Magic Time (08:30–09:30) — hit these first</p>
+        <ul class="rides"><li><span class="rn">Spider-Man W.E.B. Adventure</span><span class="rstars">★★★★★</span></li><li><span class="rn">Ratatouille</span><span class="rstars">★★★★★</span></li><li><span class="rn">Frozen Ever After</span><span class="rstars">★★★★★</span><span class="rnote">if open</span></li><li><span class="rn">Slinky Dog Zigzag Spin</span><span class="rstars">★★★★☆</span></li><li><span class="rn">Cars Road Trip</span><span class="rstars">★★★☆☆</span></li></ul>
+        <p class="ptip">Crush&rsquo;s Coaster (1.07 m) is great but intense and fills first — only if he enjoys fast coasters.</p>
+        <p class="psub2">Then, by rank</p>
+        <ul class="rides"><li><span class="rn">Marvel Campus</span></li><li><span class="rn">Toy Soldiers Parachute Drop</span></li><li><span class="rn">RC Racer</span><span class="rnote">1.20 m · thrill</span></li><li><span class="rn">Meet the characters</span></li><li><span class="rn">Animation Academy</span></li><li><span class="rn">Shows</span></li></ul>
+        <p class="ptip"><b>Afternoon:</b> pack — you transfer to the Paris base (Normandy Le Chantier) after.</p>
       </div>
     </div>
-    <div class="panel">
-      <h3>Standby playbook &amp; the character meal</h3>
-      <ul>
-        <li><span class="tiptag">Free</span> &nbsp;<b>Frozen Ever After virtual queue</b> — claim in the app the moment you enter each morning.</li>
-        <li><span class="tiptag">Free</span> &nbsp;<b>Rider Switch</b> at every height-restricted ride — one adult waits with Alexander, then swaps without re-queuing.</li>
-        <li><span class="tiptag">Free</span> &nbsp;<b>Single Rider</b> lines (Crush&rsquo;s Coaster, Hyperspace Mountain, Spider-Man W.E.B., RC Racer) cut adult waits.</li>
-        <li><b>Height:</b> most rides no minimum; Big Thunder / Tower of Terror / Star Tours need 1.02 m; Crush&rsquo;s Coaster 1.07 m. <b>Measure Alexander in his park shoes.</b></li>
-        <li><b>One character meal is plenty:</b> Regal View (new, Day 2) or Auberge de Cendrillon (Day 1). Book the instant you can — it saves the Princess Pavilion queue.</li>
-        <li><b>Note:</b> Plaza Gardens and Annette&rsquo;s Diner are closed for renovation — ignore older guides that list them.</li>
-      </ul>
+
+    <div class="two">
+      <div class="panel">
+        <h3>Family Top 10</h3>
+        <ol class="top10"><li>Peter Pan&#x27;s Flight</li><li>Big Thunder Mountain</li><li>Pirates of the Caribbean</li><li>Ratatouille</li><li>Spider-Man W.E.B. Adventure</li><li>Frozen Ever After</li><li>Buzz Lightyear Laser Blast</li><li>It&#x27;s a Small World</li><li>Star Tours</li><li>Autopia</li></ol>
+      </div>
+      <div class="panel">
+        <h3>Heights (Alexander, 1.2 m) &amp; the character meal</h3>
+        <ul>
+          <li><b>He clears:</b> Big Thunder / Star Tours (1.02 m), Crush&rsquo;s Coaster (1.07 m), and — just — Hyperspace Mountain &amp; RC Racer (1.20 m). Autopia: rides with an adult (driving solo needs 1.32 m). <b>Measure him in his park shoes.</b></li>
+          <li><b>Midday heat block (14:00–18:00):</b> hotel rest or indoor rides (Pirates, Phantom Manor, small world) for Alexander &amp; the grandparents.</li>
+          <li><b>Lunch:</b> Blue Lagoon (inside Pirates) Day 1; Bistrot Chez Rémy (Ratatouille) Day 2 — book both early.</li>
+          <li><b>One character meal is plenty</b> — book the instant you can; it saves the Princess Pavilion queue.</li>
+          <li><b>Closed for renovation:</b> Plaza Gardens &amp; Annette&rsquo;s Diner — ignore older guides.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
