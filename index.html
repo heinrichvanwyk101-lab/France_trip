@@ -1227,7 +1227,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <i><span class="lg-alex"></span> Alexander spot</i>
       <i><span class="lg-stay"></span> where we stay</i>
       <i><span class="lg-rest"></span> restaurant you've added</i>
-      <i>+ / &minus; or pinch to zoom &middot; two-finger drag to pan &middot; tap a pin to plan</i>
+      <i>pinch or +/<i>+ / &minus; or pinch to zoom &middot; two-finger drag to pan &middot; tap a pin to plan</i>minus; to zoom <i>+ / &minus; or pinch to zoom &middot; two-finger drag to pan &middot; tap a pin to plan</i>middot; drag to pan when zoomed in <i>+ / &minus; or pinch to zoom &middot; two-finger drag to pan &middot; tap a pin to plan</i>middot; tap a pin to plan</i>
     </div>
     <ol class="mapkey"><li><span class="kn ">1</span>Sagrada Família</li><li><span class="kn ">2</span>Casa Batlló</li><li><span class="kn pink">3</span>L&#x27;Aquàrium de Barcelona</li><li><span class="kn pink">4</span>CosmoCaixa</li><li><span class="kn pink">5</span>Parc de la Ciutadella</li><li><span class="kn pink">6</span>Nova Icària Beach</li><li><span class="kn ">7</span>Barcelona Cathedral</li><li><span class="kn ">8</span>Hospital de Sant Pau</li><li><span class="kn ">9</span>Port Vell</li><li><span class="kn ">10</span>Passeig de Gràcia</li><li><span class="kn pink">11</span>Park Güell</li></ol>
     <div class="cards">
@@ -1831,7 +1831,7 @@ a.dpkm.far{color:var(--am);font-weight:700}
       <i><span class="lg-alex"></span> Alexander spot</i>
       <i><span class="lg-stay"></span> where we stay</i>
       <i><span class="lg-rest"></span> restaurant you've added</i>
-      <i>+ / &minus; or pinch to zoom &middot; two-finger drag to pan &middot; tap a pin to plan</i>
+      <i>pinch or +/<i>+ / &minus; or pinch to zoom &middot; two-finger drag to pan &middot; tap a pin to plan</i>minus; to zoom <i>+ / &minus; or pinch to zoom &middot; two-finger drag to pan &middot; tap a pin to plan</i>middot; drag to pan when zoomed in <i>+ / &minus; or pinch to zoom &middot; two-finger drag to pan &middot; tap a pin to plan</i>middot; tap a pin to plan</i>
     </div>
     <ol class="mapkey"><li><span class="kn ">1</span>Eiffel Tower</li><li><span class="kn pink">2</span>Seine River Cruise</li><li><span class="kn ">3</span>Les Invalides / Musée de l&#x27;Armée</li><li><span class="kn pink">4</span>Jardin du Luxembourg</li><li><span class="kn pink">5</span>Jardin des Tuileries</li><li><span class="kn pink">6</span>Champ de Mars</li><li><span class="kn pink">7</span>Place des Vosges</li><li><span class="kn ">8</span>Louvre Museum</li><li><span class="kn ">9</span>Musée d&#x27;Orsay</li><li><span class="kn ">10</span>Notre-Dame de Paris</li><li><span class="kn ">11</span>Galeries Lafayette Rooftop</li><li><span class="kn ">12</span>Sainte-Chapelle</li><li><span class="kn ">13</span>Montmartre &amp; Sacré-Cœur</li><li><span class="kn ">14</span>Musée de l&#x27;Orangerie</li></ol>
     <div class="cards">
@@ -2702,6 +2702,7 @@ function buildMap(id,kind){
   const W0=el.clientWidth||320, H0=el.clientHeight||300;
   const st={z:fitZoom(box,W0,H0), cLat:(box.minLa+box.maxLa)/2, cLng:(box.minLn+box.maxLn)/2};
   st.minZ=Math.max(2, st.z-1);
+  st.zFit=st.z;
   el._state=st;
   const pop=document.createElement('div'); pop.className='mappop';
   const ctrl=document.createElement('div'); ctrl.className='mapctl';
@@ -2851,9 +2852,24 @@ function buildMap(id,kind){
     else{pinch.cx=n.cx;pinch.cy=n.cy;}
   }},{passive:false});
   el.addEventListener('touchend',ev=>{if(ev.touches.length<2)pinch=null;});
+  // one-finger pan when zoomed in past the default view (otherwise let the page scroll)
+  let s1=null;
+  el.addEventListener('touchstart',ev=>{
+    if(ev.touches.length===1){const t=ev.touches[0];
+      s1={x:t.clientX,y:t.clientY,lx:t.clientX,ly:t.clientY,pan:false}; el._panned=false;}
+  },{passive:true});
+  el.addEventListener('touchmove',ev=>{
+    if(pinch||!s1||ev.touches.length!==1) return;
+    const t=ev.touches[0];
+    if(!s1.pan && st.z>st.zFit && Math.hypot(t.clientX-s1.x,t.clientY-s1.y)>8) s1.pan=true;
+    if(s1.pan){ ev.preventDefault(); panBy(t.clientX-s1.lx,t.clientY-s1.ly); s1.lx=t.clientX; s1.ly=t.clientY; el._panned=true; }
+  },{passive:false});
+  el.addEventListener('touchend',ev=>{if(ev.touches.length===0)s1=null;});
+  el.addEventListener('click',ev=>{if(el._panned){ev.stopPropagation();ev.preventDefault();el._panned=false;}},true);
   // double-tap to zoom in
   let lastTap=0;
   el.addEventListener('touchend',ev=>{if(ev.touches.length===0&&ev.changedTouches.length===1){
+    if(el._panned)return;
     if(ev.target.closest&&ev.target.closest('.pin,.zbtn,.mappop'))return;
     const now=Date.now();
     if(now-lastTap<300){const r=el.getBoundingClientRect();
